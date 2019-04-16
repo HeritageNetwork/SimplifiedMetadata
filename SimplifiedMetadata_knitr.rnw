@@ -1,0 +1,256 @@
+%This knitr document is called by the knit2pdf call in mmf_simple_metadata.Rmd
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{B0}{$^{\circ}$}
+\usepackage{geometry}
+\usepackage{fancyhdr} %for headers,footers
+\usepackage{underscore} %needed if any text has underscores
+\usepackage{rotating}
+\usepackage[super,comma]{natbib}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{caption} %for managing table captions
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+\geometry{letterpaper, top=0.45in, bottom=0.75in, left=0.75in, right=0.75in}
+\pagestyle{fancy} \fancyhf{} \renewcommand\headrulewidth{0pt} %strip default header/footer stuff
+\captionsetup[table]{labelformat=empty} % stops auto-captioning (numbering)
+
+%add footers
+\cfoot{
+\small   %small font. The double slashes is newline in fancyhdr
+Species distribution model for \Sexpr{as.character(sdm.comname)} (\textit{\Sexpr{as.character(sdm.sciname)}}). \\ \Sexpr{sdm.program}
+}
+\rfoot{p. \thepage}
+
+
+\normalsize %return the font to normal
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{4.75in}   %everything in this minipage will be adjacent, left of the thermometer
+  \LARGE \textit{\Sexpr{as.character(sdm.sciname)}} \\ 
+  \normalsize Species Distribution Model (SDM) metadata \\
+  Common name: \href{\Sexpr{as.character(NSurl)}}{\Sexpr{as.character(sdm.comname)}}  \\
+  Grank: \Sexpr{ paste(as.character(sdm.grank)," - ",as.character(ranks[[sdm.grank]]), sep="")}\\
+  Date: \Sexpr{format(Sys.Date(), "%d %b %Y")} \\  
+  Code: \Sexpr{as.character(sdm.code1)} (EGT_ID: \Sexpr{as.character(sdm.code2)})
+\end{minipage}  \hfill   
+\begin{minipage}[b]{2in}   %minipage for thermometer  
+<<thermometer1, fig.height=1, fig.width=1, include=FALSE, echo=FALSE>>=
+  par(mar=c(0.9,0.2,0.2,0.2))
+  if (exists("tss.summ")) {
+    temp <- tss.summ$mean
+    thermTemp <- vector("list")
+    if (temp < .50){
+                thermTemp <- c("red", "poor")
+                } else if (temp < .80){
+                thermTemp <- c("yellow","fair")
+                } else {
+                thermTemp <- c("green", "good") }
+    symbols(1, 1, thermometers=cbind(0.5, 1, temp), inches=.5, fg = thermTemp[[1]],
+           xaxt = "n", yaxt = "n", ann = FALSE, bty = "n", pin = c(1.2,1.2) )
+    text (1,1, thermTemp[[2]],
+        adj = c(0.5,4), cex = .75, col = "black", xpd=NA)
+    text (1,1, paste("TSS=",format(round(temp,digits=2)),sep=""),
+        adj = c(0.5,6), cex = .75, col = "black", xpd=NA)
+  } else {
+    plot(1,1, col = "white", axes = FALSE)
+    box("outer","dotted") #show the outline of the fig box when debugging
+    text (1,1, "No evaluation",
+        adj = c(0.5,4), cex = .75, col = "black", xpd=NA)
+  }
+  
+@
+  \begin{center}
+  \includegraphics{figure/thermometer1-1.pdf} \\ %place it
+  validation success \end{center}
+\end{minipage}  
+
+\smallskip
+\hrule
+\medskip
+\noindent 
+The MoBI project is a collaborative undertaken between NatureServe and ESRI to produce a ”conservation value map” that depicts the relative density of range restricted, at-risk species across the conterminous United States. Specifically, the map will show the irreplaceability, defined as the inverse of range size and reflecting the number of options remaining to protect a species, of at-risk plants and animals. ‘Warmer’ regions of the map will represent regions with more, smaller-ranged at-risk species whereas ‘cooler’ regions identify areas with fewer, more broadly-distributed at-risk species. The data underlying the map will consist of modeled distributions of both aquatic species, which are among the most threatened species in the U.S., and terrestrial species, including pollinators that perform important ecosystem services. All full species listed under the U.S. Endangered Species Act will also be included. Data from NatureServe and U.S. Network Programs will be used to train the models, and stored and accessed in a processing environment provided by ESRI. The Conservation Value Map will provide, for the first time, a wall-to-wall, consistent, scientifically rigorous surface for pinpointing where new conservation investments, especially from private donors, will most effectively prevent extinctions. \\\\\\
+\noindent
+This SDM is an 'alternative map', made because the species could not satisfactorily be modeled using inductive methods. It used as inputs \Sexpr{as.character(sdm.inputs)}, and was \Sexpr{as.character(sdm.notes)}. \\\\
+\medskip
+\textbf{Model Type and Validation} \\\\
+\normalsize
+ 
+    <<checkEvalExists, include=FALSE, echo=FALSE>>=
+txt <- "Validation statistics cannot be run on a deductive model." 
+@
+\noindent
+<<EvalTextPrint, results='asis', echo=FALSE>>=
+cat(txt)
+@
+
+\medskip
+\noindent
+Deductive species distribution models show a reasonable approximation of a species' location as its requirements and history are currently understood and can be mapped. No model will ever depict sites where a targeted element will occur with certainty, and absence of evidence is not evidence of absence. SDMs can be used in many ways depending on intended use. For targeting field surveys, an SDM may be used to refine the search area; users should always employ additional GIS tools to further direct search efforts.
+
+\normalsize
+\pagebreak
+\noindent
+\textbf{Model Evaluation and Intended Use} \\\\
+All SDMs are sensitive to data inputs and methodological choices. Table 4 presents scoring of modeling factors based on the model evaluation rubric presented in Sofaer et al. 2019 {\protect\NoHyper\cite{SofaerEtAl2019}\protect\endNoHyper}.
+\\
+\smallskip
+\small
+
+\noindent Table 4. Model evaluation results based on Sofaer et al. 2019. Scores can be attributed as ideal, acceptable, or problematic.
+\smallskip
+\normalsize
+\begin{table}[h]
+\small
+\centering
+\begin{tabular}{m{4cm}m{5cm}P{2cm}m{4.5cm}}
+\hline
+Category & Metric & Score & Notes 
+\\ \hline
+\multirow{3}{*}{Species Data} & Presence data quality & not applicable & ... 
+\\ \cline{2-4} & Absence/Background Data & not applicable & ... 
+\\ \cline{2-4} & Evaluation Data & not applicable & ... 
+\\ \hline
+\multirow{2}{*}{Environmental Predictors} & Ecological and predictive relevance & not applicable & ... 
+\\ \cline{2-4} & Spatial and temporal alignment & not applicable & ... \\ \hline
+\multirow{5}{*}{Modeling Process} & Algorithm choice & Deductive & \Sexpr{as.character(sdm.notes)} 
+\\ \cline{2-4} & Sensitivity & not applicable & ... 
+\\ \cline{2-4} & Statistical rigor & None whatsoever & ... 
+\\ \cline{2-4} & Performance & not applicable & ... 
+\\ \cline{2-4} & Model review & \Sexpr{as.character(sdm.review)} &  \Sexpr{as.character(sdm.final)}
+\\ \hline
+\multirow{3}{*}{Model Products} & Mapped products & \Sexpr{as.character(model_run_name)} & ... 
+\\ \cline{2-4} & Interpretation support products & None supplied & ... 
+\\ \cline{2-4} & Reproducibility & Easy & ... 
+\\ \hline & Iterative & \Sexpr{as.character(sdm.review)} & \Sexpr{as.character(sdm.final)} 
+\\ \hline                      
+\end{tabular}
+\end{table}
+
+\pagebreak
+\medskip
+\begin{center}
+
+<<mapFig, include = FALSE, echo = FALSE, dev='png', fig.height=8, fig.width=7, dpi = 300>>=
+par(mar = c(0,0,4.5,0), cex = 0.9, adj = 0.05)
+#no probabilities, just Value = 1
+# set up plot based on model results
+rascrs <- proj4string(results_shape)
+plot(x = st_transform(sfcounties$geometry, rascrs), col = "white", bg = "lightblue", 
+     border="gray70", lwd=0.3, axes = F, xlim = c(x1,x2), ylim = c(y1,y2))
+plot(x = st_transform(sfstates$geometry, rascrs), col = NA, border="gray40", lwd=1.3, xpd = F, add=T)
+plot(results_shape, col = "orangered2", legend = F, add=T)
+title(main = paste0(as.character(sdm.comname), " (", 
+                    as.character(sdm.sciname), "): \n    Species Distribution Model"), 
+      cex.main = 1.1)
+box(which = "plot", lwd=1.2) #this doesn't work right and is driving me nuts
+box(which = "outer", lwd=1.2)
+
+dev.off()
+@
+\includegraphics{figure/mapFig-1.png}    
+\end{center}
+\noindent
+\small
+Figure 4. A generalized view of the model results. State boundaries are shown in dark gray, counties in light gray.
+
+\normalsize
+\pagebreak
+\noindent
+This distribution model would not have been possible without data sharing among organizations. The following organizations provided data:
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+<<DataSourcesList, results="asis", echo = FALSE>>=
+if(", " %in% sdm.source){
+  sourcelist <- strsplit(sdm.source, ", ")
+  for(i in 1:length(sourcelist)){
+    x <- paste("\\item ", sourcelist[[i]], "\n", sep = "")
+    y <- sub("&", "\\\\&", x) #escape ampersands if there are any - special character in latex
+    cat(y)
+  }
+} else {
+  cat(sdm.source)
+}
+@
+\end{itemize}
+
+\medskip
+\noindent
+This model was built using a methodology developed through collaboration among the Florida Natural Areas Inventory, the New York Natural Heritage Program, the Pennsylvania Natural Heritage Program, and the Virginia Natural Heritage Program, all member programs of the NatureServe Network. This work was improved by the collaboration of other members of the Natural Heritage Network who generously gave their time and talents in support of the technical methods and processes used to develop these models. Our appreciation goes out to the Colorado Natural Heritage Program, Oregon Natural Heritage Program, Wyoming Natural Heritage Program, and the Florida Natural Areas Inventory. It is one of a suite of species distribution models developed using the same methods, scripts, and environmental data sets. Our goal was to be consistent and transparent in our methodology, validation, and output. \\\\
+\noindent
+This alternative model was created by: \Sexpr{as.character(sdm.modeler)} \\
+\medskip
+\noindent
+\begin{center}
+\setlength{\fboxsep}{5pt}
+\fbox{
+\begin{minipage}[t]{0.90\linewidth}%
+Please cite this document and its associated SDM as: \\
+NatureServe and Heritage Network Partners. \Sexpr{format(Sys.Date(), "%Y")}. Species distribution model for \Sexpr{as.character(sdm.comname)} (\textit{\Sexpr{as.character(sdm.sciname)}}). Created on \Sexpr{format(Sys.Date(), "%d %b %Y")}. Arlington, VA with Network partners from CO, FL, VA, PA, and NY.
+\end{minipage}
+}
+\end{center}
+
+\medskip
+\noindent
+\textbf{References}
+\small
+\renewcommand{\refname}{\vskip -40 pt} %kill the header on the bibliography
+\begin{thebibliography}{99}\setlength{\itemsep}{-1pt}
+  \bibstyle{biblatex}
+  \bibitem{breiman2001} Breiman, L. 2001. Random forests. Machine Learning 45:5-32.
+  \bibitem{iverson2004} Iverson, L. R., A. M. Prasad, and A. Liaw. 2004. 
+    New machine learning tools for predictive vegetation mapping after 
+    climate change: Bagging and Random Forest perform better than Regression 
+    Tree Analysis. Landscape ecology of trees and forests.Proceedings of the 
+    twelfth annual IALE (UK) conference, Cirencester, UK, 21-24 June 2004 317-320.
+  \bibitem{liaw2002} Liaw, A. and M. Wiener. 2002. Classification and 
+    regression by randomForest. R News 2:18-22. Version \Sexpr{packageDescription("randomForest")$Version}.
+  \bibitem{r} R Core Team. 2016. R: A language and environment for statistical computing. 
+    R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/. \Sexpr{R.version.string}.
+  \bibitem{nhd} U.S. Environmental Protection Agency (USEPA) and the U.S. Geological Survey (USGS). 2012. 
+    National Hydrography Dataset Plus - NHDPlus. Version 2. http://www.epa.gov/waters.
+  \bibitem{fielding1997} Fielding, A. H. and J. F. Bell. 1997. 
+    A review of methods for the assessment of prediction errors in 
+    conservation presence/absence models. Environmental Conservation 24:38-49.
+  \bibitem{fielding2002} Fielding, A. H. 2002. What are the appropriate
+    characteristics of an accuracy measure? Pages 271-280 in Predicting Species
+    Occurrences, issues of accuracy and scale. J. M. Scott, P. J. Helglund, M. 
+    L. Morrison, J. B. Haufler, M. G. Raphael, W. A. Wall, F. B. Samson, eds. Island Press, Washington.
+  \bibitem{pearson2007} Pearson, R.G. 2007. Species Distribution Modeling for 
+    Conservation Educators and Practitioners. Synthesis. 
+    American Museum of Natural History. Available at http://ncep.amnh.org.
+  \bibitem{allouche2006} Allouche, O., A. Tsoar, and R. Kadmon. 2006. 
+    Assessing the accuracy of species distribution models: prevalence, 
+    kappa and the true skill statistic (TSS). Journal of Applied Ecology 43:1223-1232.
+  \bibitem{vaughan2005} Vaughan, I. P. and S. J. Ormerod. 2005. The continuing 
+    challenges of testing species distribution models. 
+    Journal of Applied Ecology 42:720-730.
+  \bibitem{LiuEtAl2005} Liu, C., P. M. Berry, T. P. Dawson, and R. G. Pearson. 2005. 
+    Selecting thresholds of occurrence in the prediction of species distributions. 
+    Ecography 28:385–393.
+  \bibitem{LiuEtAl2015} Liu, C., G. Newell, and M. White. 2015. On the selection of 
+    thresholds for predicting species occurrence with presence-only data. Ecology and 
+    Evolution 6:337–348. 
+  \bibitem{SofaerEtAl2019} Sofaer, H. R., C. S. Jarnevich1, I. S. Pearse, R. L. Smyth, S. Auer, G. L. Cook, T. C. Edwards, Jr., G. F. Guala, T. G. Howard, J. T. Morisette, and H. Hamilton. (In press). The development and delivery of species distribution models to inform decision-making. BioScience.
+  \bibitem{streamcat} Hill, R. A., M. H. Weber, S. G. Leibowitz, A. R. Olsen, and D. J. Thornbrugh. 
+    The Stream-Catchment (StreamCat) Dataset: A Database of Watershed Metrics for the Conterminous United States. 
+    2016. Journal of the American Water Resources Association (JAWRA) 52:120-128.
+\end{thebibliography}
+
+\end{document}
