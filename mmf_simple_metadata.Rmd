@@ -33,7 +33,7 @@ Spreadsheet contains 1 tab with:
 
 + Sciname  
 + CommName
-+ Code1 (global ID)
++ Code1 (species code)
 + Code2 (Element ID)  
 + Grank (rounded)
 + Inputs  
