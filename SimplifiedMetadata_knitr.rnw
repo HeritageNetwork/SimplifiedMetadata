@@ -82,9 +82,9 @@ Species distribution model for \Sexpr{as.character(sdm.comname)} (\textit{\Sexpr
 \hrule
 \medskip
 \noindent 
-The MoBI project is a collaborative undertaken between NatureServe and ESRI to produce a ”conservation value map” that depicts the relative density of range restricted, at-risk species across the conterminous United States. Specifically, the map will show the irreplaceability, defined as the inverse of range size and reflecting the number of options remaining to protect a species, of at-risk plants and animals. ‘Warmer’ regions of the map will represent regions with more, smaller-ranged at-risk species whereas ‘cooler’ regions identify areas with fewer, more broadly-distributed at-risk species. The data underlying the map will consist of modeled distributions of both aquatic species, which are among the most threatened species in the U.S., and terrestrial species, including pollinators that perform important ecosystem services. All full species listed under the U.S. Endangered Species Act will also be included. Data from NatureServe and U.S. Network Programs will be used to train the models, and stored and accessed in a processing environment provided by ESRI. The Conservation Value Map will provide, for the first time, a wall-to-wall, consistent, scientifically rigorous surface for pinpointing where new conservation investments, especially from private donors, will most effectively prevent extinctions. \\\\\\
+The MoBI project is a collaborative undertaken between NatureServe and ESRI to produce a ‘conservation value map’ that depicts the relative density of range restricted, at-risk species across the conterminous United States. Specifically, the map will show the irreplaceability, defined as the inverse of range size and reflecting the number of options remaining to protect a species, of at-risk plants and animals. ‘Warmer’ regions of the map will represent regions with more, smaller-ranged at-risk species whereas ‘cooler’ regions identify areas with fewer, more broadly-distributed at-risk species. The data underlying the map will consist of modeled distributions of both aquatic species, which are among the most threatened species in the U.S., and terrestrial species, including pollinators that perform important ecosystem services. All full species listed under the U.S. Endangered Species Act will also be included. Data from NatureServe and U.S. Network Programs will be used to train the models, and stored and accessed in a processing environment provided by ESRI. The Conservation Value Map will provide, for the first time, a wall-to-wall, consistent, scientifically rigorous surface for pinpointing where new conservation investments, especially from private donors, will most effectively prevent extinctions. \\\\\\
 \noindent
-This SDM is an 'alternative map', made because the species could not satisfactorily be modeled using inductive methods. It used as inputs \Sexpr{as.character(sdm.inputs)}, and was \Sexpr{as.character(sdm.notes)}. \\\\
+This SDM is an ‘alternative map’, made because the species could not satisfactorily be modeled using inductive methods. It used as inputs \Sexpr{as.character(sdm.inputs)}, and was \Sexpr{as.character(sdm.notes)}. \\\\
 \medskip
 \textbf{Model Type and Validation} \\\\
 \normalsize
@@ -99,18 +99,18 @@ cat(txt)
 
 \medskip
 \noindent
-Deductive species distribution models show a reasonable approximation of a species' location as its requirements and history are currently understood and can be mapped. No model will ever depict sites where a targeted element will occur with certainty, and absence of evidence is not evidence of absence. SDMs can be used in many ways depending on intended use. For targeting field surveys, an SDM may be used to refine the search area; users should always employ additional GIS tools to further direct search efforts.
+Deductive species distribution models show a reasonable approximation of a species’ location as its requirements and history are currently understood and can be mapped. No model will ever depict sites where a targeted element will occur with certainty, and absence of evidence is not evidence of absence. SDMs can be used in many ways depending on intended use. For targeting field surveys, an SDM may be used to refine the search area; users should always employ additional GIS tools to further direct search efforts.
 
 \normalsize
 \pagebreak
 \noindent
 \textbf{Model Evaluation and Intended Use} \\\\
-All SDMs are sensitive to data inputs and methodological choices. Table 4 presents scoring of modeling factors based on the model evaluation rubric presented in Sofaer et al. 2019 {\protect\NoHyper\cite{SofaerEtAl2019}\protect\endNoHyper}.
+All SDMs are sensitive to data inputs and methodological choices. Table 1 presents scoring of modeling factors based on the model evaluation rubric presented in Sofaer et al. 2019 {\protect\NoHyper\cite{SofaerEtAl2019}\protect\endNoHyper}.
 \\
 \smallskip
 \small
 
-\noindent Table 4. Model evaluation results based on Sofaer et al. 2019. Scores can be attributed as ideal, acceptable, or problematic.
+\noindent Table 1. Model evaluation results based on Sofaer et al. 2019. Scores can be attributed as ideal, acceptable, or problematic.
 \smallskip
 \normalsize
 \begin{table}[h]
@@ -165,7 +165,7 @@ dev.off()
 \end{center}
 \noindent
 \small
-Figure 4. A generalized view of the model results. State boundaries are shown in dark gray, counties in light gray.
+Figure 1. A generalized view of the model results. State boundaries are shown in dark gray, counties in light gray.
 
 \normalsize
 \pagebreak
@@ -193,7 +193,7 @@ if(", " %in% sdm.source){
 \noindent
 This model was built using a methodology developed through collaboration among the Florida Natural Areas Inventory, the New York Natural Heritage Program, the Pennsylvania Natural Heritage Program, and the Virginia Natural Heritage Program, all member programs of the NatureServe Network. This work was improved by the collaboration of other members of the Natural Heritage Network who generously gave their time and talents in support of the technical methods and processes used to develop these models. Our appreciation goes out to the Colorado Natural Heritage Program, Oregon Natural Heritage Program, Wyoming Natural Heritage Program, and the Florida Natural Areas Inventory. It is one of a suite of species distribution models developed using the same methods, scripts, and environmental data sets. Our goal was to be consistent and transparent in our methodology, validation, and output. \\\\
 \noindent
-This alternative model was created by: \Sexpr{as.character(sdm.modeler)} \\
+This alternative model was created by: \Sexpr{as.character(sdm.modeler)}. \\
 \medskip
 \noindent
 \begin{center}
