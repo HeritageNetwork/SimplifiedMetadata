@@ -1,0 +1,6 @@
+BibCode	Tag	Reference
+streamcat	"Watershed Metrics"	"Hill, R. A., M. H. Weber, S. G. Leibowitz, A. R. Olsen, and D. J. Thornbrugh. The Stream-Catchment (StreamCat) Dataset: A Database of Watershed Metrics for the Conterminous United States. 2016. Journal of the American Water Resources "Association (JAWRA) 52:120-128.
+bamona	"BAMONA"	"Lotts, Kelly and Thomas Naberhaus, coordinators. 2017. Butterflies and Moths of North America. http://www.butterfliesandmoths.org/ (Version 04172019)."
+nhd	"Hydrology"	"U.S. Environmental Protection Agency (USEPA) and the U.S. Geological Survey (USGS). 2012. National Hydrography Dataset Plus - NHDPlus. Version 2. http://www.epa.gov/waters."
+edna	"Elevation"	"U.S. Geological Survey Earth Resources Observation and Science (USGS/EROS). 2003. Elevation Derivatives for National Applications (EDNA) Original Digital Elevation Model (DEM). Stage 1 Data. http://edna.usgs.gov."
+gaplc	"Land Cover"	"U.S. Geological Survey Gap Analysis Program. 2013. Land Cover Data v2.2. https://gis1.usgs.gov/csas/gap/viewer/land_cover/Map.aspx."

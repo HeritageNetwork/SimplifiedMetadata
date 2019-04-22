@@ -1848,8 +1848,8 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<div id="last-revised-2019-04-17" class="section level4">
-<h4>Last revised: 2019-04-17</h4>
+<div id="last-revised-2019-04-22" class="section level4">
+<h4>Last revised: 2019-04-22</h4>
 </div>
 <div id="built-on-r-3.4.4" class="section level4">
 <h4>Built on R 3.4.4</h4>
@@ -1858,13 +1858,13 @@ $(document).ready(function () {
 <h3>1. Required to run the code:</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShrbml0cilcbmxpYnJhcnkoc2YpXG5saWJyYXJ5KHJhc3RlcilcbmxpYnJhcnkoeHRhYmxlKVxubGlicmFyeSh0aW55dGV4KVxubGlicmFyeShzdHJpbmdpKVxubGlicmFyeSh0YWJsZXMpXG5saWJyYXJ5KHJlYWR4bClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShrbml0cilcbmxpYnJhcnkoc2YpXG5saWJyYXJ5KHJhc3RlcilcbmxpYnJhcnkoeHRhYmxlKVxubGlicmFyeSh0aW55dGV4KVxubGlicmFyeShzdHJpbmdyKVxubGlicmFyeSh0YWJsZXMpXG5saWJyYXJ5KHJlYWR4bClcbmBgYCJ9 -->
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(knitr)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(sf)</a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(raster)</a>
 <a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(xtable)</a>
 <a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(tinytex)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(stringi)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(stringr)</a>
 <a class="sourceLine" id="cb1-7" title="7"><span class="kw">library</span>(tables)</a>
 <a class="sourceLine" id="cb1-8" title="8"><span class="kw">library</span>(readxl)</a></code></pre></div>
 <!-- rnb-source-end -->
@@ -1912,7 +1912,7 @@ $(document).ready(function () {
 <p>(you will want to change these)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud29ya2luZy5kaXIgPC0gXCJDOi9NaWNoZWxsZS9NZXRhZGF0YS90ZXN0XCJcbmJhc2VsYXllcnMuZGlyIDwtIFwiRDovR0lTL0Jhc2UvVVNBXCJcbm1vZGVscy5kaXIgPC0gXCJNOi9HSVNfUHJvamVjdHMvTU9CSVwiXG54bHMgPC0gXCJtZXRhZGF0YV9pbnB1dHMueGxzeFwiXG5cbnJhbmtzIDwtIGxpc3QoXCJDcml0aWNhbGx5IEltcGVyaWxlZFwiLCBcIkltcGVyaWxlZFwiLCBcIlZ1bG5lcmFibGVcIiwgXCJBcHBhcmVudGx5IFNlY3VyZVwiLCBcIlNlY3VyZVwiKVxubmFtZXMocmFua3MpIDwtIGMoXCJHMVwiLCBcIkcyXCIsIFwiRzNcIiwgXCJHNFwiLCBcIkc1XCIpXG5zdGF0ZXMgPC0gcGFzdGUoYmFzZWxheWVycy5kaXIsIFwiU1RBVEVTLnNocFwiLCBzZXAgPSBcIi9cIilcbmNvdW50aWVzIDwtIHBhc3RlKGJhc2VsYXllcnMuZGlyLCBcIkNPVU5USUVTLnNocFwiLCBzZXAgPSBcIi9cIilcbnNmc3RhdGVzIDwtIHN0X3JlYWQoc3RhdGVzLCBxdWlldCA9IFQpXG5zZmNvdW50aWVzIDwtIHN0X3JlYWQoY291bnRpZXMsIHF1aWV0ID0gVClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud29ya2luZy5kaXIgPC0gXCJDOi9NaWNoZWxsZS9NZXRhZGF0YS90ZXN0XCJcbmJhc2VsYXllcnMuZGlyIDwtIFwiRDovR0lTL0Jhc2UvVVNBXCJcbm1vZGVscy5kaXIgPC0gXCJNOi9HSVNfUHJvamVjdHMvTU9CSVwiXG54bHMgPC0gXCJtZXRhZGF0YV9pbnB1dHMueGxzeFwiXG5cbnJhbmtzIDwtIGxpc3QoXCJDcml0aWNhbGx5IEltcGVyaWxlZFwiLCBcIkltcGVyaWxlZFwiLCBcIlZ1bG5lcmFibGVcIiwgXCJBcHBhcmVudGx5IFNlY3VyZVwiLCBcIlNlY3VyZVwiKVxubmFtZXMocmFua3MpIDwtIGMoXCJHMVwiLCBcIkcyXCIsIFwiRzNcIiwgXCJHNFwiLCBcIkc1XCIpXG5iaWJ0YWJsZSA8LSByZWFkLmRlbGltKHBhc3RlKHdvcmtpbmcuZGlyLFwiYmlidGFibGUudGFiXCIsIHNlcCA9IFwiL1wiKSwgc3RyaW5nc0FzRmFjdG9ycz1GQUxTRSlcbnN0YXRlcyA8LSBwYXN0ZShiYXNlbGF5ZXJzLmRpciwgXCJTVEFURVMuc2hwXCIsIHNlcCA9IFwiL1wiKVxuY291bnRpZXMgPC0gcGFzdGUoYmFzZWxheWVycy5kaXIsIFwiQ09VTlRJRVMuc2hwXCIsIHNlcCA9IFwiL1wiKVxuc2ZzdGF0ZXMgPC0gc3RfcmVhZChzdGF0ZXMsIHF1aWV0ID0gVClcbnNmY291bnRpZXMgPC0gc3RfcmVhZChjb3VudGllcywgcXVpZXQgPSBUKVxuYGBgIn0= -->
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">working.dir &lt;-<span class="st"> &quot;C:/Michelle/Metadata/test&quot;</span></a>
 <a class="sourceLine" id="cb2-2" title="2">baselayers.dir &lt;-<span class="st"> &quot;D:/GIS/Base/USA&quot;</span></a>
 <a class="sourceLine" id="cb2-3" title="3">models.dir &lt;-<span class="st"> &quot;M:/GIS_Projects/MOBI&quot;</span></a>
@@ -1920,10 +1920,11 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb2-5" title="5"></a>
 <a class="sourceLine" id="cb2-6" title="6">ranks &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Critically Imperiled&quot;</span>, <span class="st">&quot;Imperiled&quot;</span>, <span class="st">&quot;Vulnerable&quot;</span>, <span class="st">&quot;Apparently Secure&quot;</span>, <span class="st">&quot;Secure&quot;</span>)</a>
 <a class="sourceLine" id="cb2-7" title="7"><span class="kw">names</span>(ranks) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>, <span class="st">&quot;G3&quot;</span>, <span class="st">&quot;G4&quot;</span>, <span class="st">&quot;G5&quot;</span>)</a>
-<a class="sourceLine" id="cb2-8" title="8">states &lt;-<span class="st"> </span><span class="kw">paste</span>(baselayers.dir, <span class="st">&quot;STATES.shp&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)</a>
-<a class="sourceLine" id="cb2-9" title="9">counties &lt;-<span class="st"> </span><span class="kw">paste</span>(baselayers.dir, <span class="st">&quot;COUNTIES.shp&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)</a>
-<a class="sourceLine" id="cb2-10" title="10">sfstates &lt;-<span class="st"> </span><span class="kw">st_read</span>(states, <span class="dt">quiet =</span> T)</a>
-<a class="sourceLine" id="cb2-11" title="11">sfcounties &lt;-<span class="st"> </span><span class="kw">st_read</span>(counties, <span class="dt">quiet =</span> T)</a></code></pre></div>
+<a class="sourceLine" id="cb2-8" title="8">bibtable &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="kw">paste</span>(working.dir,<span class="st">&quot;bibtable.tab&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb2-9" title="9">states &lt;-<span class="st"> </span><span class="kw">paste</span>(baselayers.dir, <span class="st">&quot;STATES.shp&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)</a>
+<a class="sourceLine" id="cb2-10" title="10">counties &lt;-<span class="st"> </span><span class="kw">paste</span>(baselayers.dir, <span class="st">&quot;COUNTIES.shp&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)</a>
+<a class="sourceLine" id="cb2-11" title="11">sfstates &lt;-<span class="st"> </span><span class="kw">st_read</span>(states, <span class="dt">quiet =</span> T)</a>
+<a class="sourceLine" id="cb2-12" title="12">sfcounties &lt;-<span class="st"> </span><span class="kw">st_read</span>(counties, <span class="dt">quiet =</span> T)</a></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1932,234 +1933,45 @@ $(document).ready(function () {
 <h3>4. Read each record in the spreadsheet and pass to knitr</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2Qod29ya2luZy5kaXIpXG5gYGAifQ== -->
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">setwd</span>(working.dir)</a></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2Qod29ya2luZy5kaXIpXG5pbi5tZXRhIDwtIHJlYWRfeGxzeCh4bHMsIGNvbF90eXBlcyA9IFwidGV4dFwiKVxuXG5mb3IgKGkgaW4gMTpucm93KGluLm1ldGEpKXtcbiAgc2RtLnNjaW5hbWUgPC0gaW4ubWV0YSRTY2lOYW1lW2ldXG4gIHNkbS5jb21uYW1lIDwtIGluLm1ldGEkQ29tbU5hbWVbaV1cbiAgcmVzdWx0c19zaGFwZSA8LSByYXN0ZXIocGFzdGUobW9kZWxzLmRpciwgaW4ubWV0YSRGaWxlbmFtZVtpXSwgc2VwID0gXCIvXCIpKVxuICByYXNleHQgPC0gZXh0ZW50KHJlc3VsdHNfc2hhcGUpXG4gIHgxIDwtIHJhc2V4dFsxXSAtIChyYXNleHRbMV0gKiAwLjAxKVxuICB4MiA8LSByYXNleHRbMl0gKyAocmFzZXh0WzJdICogMC4wMSlcbiAgeTEgPC0gcmFzZXh0WzNdIC0gKHJhc2V4dFszXSAqIDAuMDEpXG4gIHkyIDwtIHJhc2V4dFs0XSArIChyYXNleHRbNF0gKiAwLjAxKVxuICBOU3VybCA8LSBwYXN0ZShcImh0dHA6Ly9leHBsb3Jlci5uYXR1cmVzZXJ2ZS5vcmcvc2VydmxldC9OYXR1cmVTZXJ2ZT9zZWFyY2hOYW1lPVwiLGdzdWIoXCIgXCIsIFwiK1wiLCBzZG0uc2NpbmFtZSwgZml4ZWQ9VFJVRSksIHNlcD1cIlwiKVxuICBuIDwtIG5jaGFyKGluLm1ldGEkRmlsZW5hbWVbaV0pXG4gIG1vZGVsX3J1bl9uYW1lIDwtIHN1YnN0cihpbi5tZXRhJEZpbGVuYW1lW2ldLCAxLCBuLTQpXG4gIHNkbS5jb2RlMSA8LSBpbi5tZXRhJENvZGUxW2ldXG4gIHNkbS5jb2RlMiA8LSBpbi5tZXRhJENvZGUyW2ldXG4gIHNkbS5ncmFuayA8LSBpbi5tZXRhJEdyYW5rW2ldXG4gIHNkbS5tb2RlbGVyIDwtIHBhc3RlKGluLm1ldGEkQ29udGFjdE5hbWVbaV0sIGluLm1ldGEkQ29udGFjdEVtYWlsW2ldLCBpbi5tZXRhJENvbnRhY3RPcmdbaV0sIHNlcCA9IFwiLCBcIilcbiAgc2RtLnByb2dyYW0gPC0gaW4ubWV0YSRDb250YWN0T3JnW2ldXG4gIHNkbS5pbnB1dHMgPC0gaW4ubWV0YSRJbnB1dHNbaV1cbiAgc2RtLnNvdXJjZSA8LSBpbi5tZXRhJElucHV0U291cmNlW2ldXG4gIHNkbS5ub3RlcyA8LSBpbi5tZXRhJE5vdGVzW2ldXG4gIHNkbS5yZXZpZXcgPC0gaW4ubWV0YSRSZXZpZXdlZFtpXVxuICBzZG0uZmluYWwgPC0gaW4ubWV0YSRGaW5hbFtpXVxuICBrbml0KHBhc3RlKHdvcmtpbmcuZGlyLFwiU2ltcGxpZmllZE1ldGFkYXRhX2tuaXRyLnJud1wiLHNlcD1cIi9cIiksIG91dHB1dD1wYXN0ZShtb2RlbF9ydW5fbmFtZSwgXCIudGV4XCIsc2VwPVwiXCIpKVxuICBjYWxsIDwtIHBhc3RlMChcInBkZmxhdGV4IC1pbnRlcmFjdGlvbj1ub25zdG9wbW9kZSBcIiwgbW9kZWxfcnVuX25hbWUsIFwiLnRleFwiKVxuICBzeXN0ZW0oY2FsbClcbiAgc3lzdGVtKGNhbGwpICMgMm5kIHJ1biB0byBhcHBseSBjaXRhdGlvbiBudW1iZXJzXG59XG5gYGAifQ== -->
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">setwd</span>(working.dir)</a>
+<a class="sourceLine" id="cb3-2" title="2">in.meta &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(xls, <span class="dt">col_types =</span> <span class="st">&quot;text&quot;</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(in.meta)){</a>
+<a class="sourceLine" id="cb3-5" title="5">  sdm.sciname &lt;-<span class="st"> </span>in.meta<span class="op">$</span>SciName[i]</a>
+<a class="sourceLine" id="cb3-6" title="6">  sdm.comname &lt;-<span class="st"> </span>in.meta<span class="op">$</span>CommName[i]</a>
+<a class="sourceLine" id="cb3-7" title="7">  results_shape &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="kw">paste</span>(models.dir, in.meta<span class="op">$</span>Filename[i], <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>))</a>
+<a class="sourceLine" id="cb3-8" title="8">  rasext &lt;-<span class="st"> </span><span class="kw">extent</span>(results_shape)</a>
+<a class="sourceLine" id="cb3-9" title="9">  x1 &lt;-<span class="st"> </span>rasext[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>(rasext[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb3-10" title="10">  x2 &lt;-<span class="st"> </span>rasext[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>(rasext[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb3-11" title="11">  y1 &lt;-<span class="st"> </span>rasext[<span class="dv">3</span>] <span class="op">-</span><span class="st"> </span>(rasext[<span class="dv">3</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb3-12" title="12">  y2 &lt;-<span class="st"> </span>rasext[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>(rasext[<span class="dv">4</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb3-13" title="13">  NSurl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;http://explorer.natureserve.org/servlet/NatureServe?searchName=&quot;</span>,<span class="kw">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;+&quot;</span>, sdm.sciname, <span class="dt">fixed=</span><span class="ot">TRUE</span>), <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb3-14" title="14">  n &lt;-<span class="st"> </span><span class="kw">nchar</span>(in.meta<span class="op">$</span>Filename[i])</a>
+<a class="sourceLine" id="cb3-15" title="15">  model_run_name &lt;-<span class="st"> </span><span class="kw">substr</span>(in.meta<span class="op">$</span>Filename[i], <span class="dv">1</span>, n<span class="dv">-4</span>)</a>
+<a class="sourceLine" id="cb3-16" title="16">  sdm.code1 &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Code1[i]</a>
+<a class="sourceLine" id="cb3-17" title="17">  sdm.code2 &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Code2[i]</a>
+<a class="sourceLine" id="cb3-18" title="18">  sdm.grank &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Grank[i]</a>
+<a class="sourceLine" id="cb3-19" title="19">  sdm.modeler &lt;-<span class="st"> </span><span class="kw">paste</span>(in.meta<span class="op">$</span>ContactName[i], in.meta<span class="op">$</span>ContactEmail[i], in.meta<span class="op">$</span>ContactOrg[i], <span class="dt">sep =</span> <span class="st">&quot;, &quot;</span>)</a>
+<a class="sourceLine" id="cb3-20" title="20">  sdm.program &lt;-<span class="st"> </span>in.meta<span class="op">$</span>ContactOrg[i]</a>
+<a class="sourceLine" id="cb3-21" title="21">  sdm.inputs &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Inputs[i]</a>
+<a class="sourceLine" id="cb3-22" title="22">  sdm.source &lt;-<span class="st"> </span>in.meta<span class="op">$</span>InputSource[i]</a>
+<a class="sourceLine" id="cb3-23" title="23">  sdm.notes &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Notes[i]</a>
+<a class="sourceLine" id="cb3-24" title="24">  sdm.review &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Reviewed[i]</a>
+<a class="sourceLine" id="cb3-25" title="25">  sdm.final &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Final[i]</a>
+<a class="sourceLine" id="cb3-26" title="26">  <span class="kw">knit</span>(<span class="kw">paste</span>(working.dir,<span class="st">&quot;SimplifiedMetadata_knitr.rnw&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;/&quot;</span>), <span class="dt">output=</span><span class="kw">paste</span>(model_run_name, <span class="st">&quot;.tex&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>))</a>
+<a class="sourceLine" id="cb3-27" title="27">  call &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;pdflatex -interaction=nonstopmode &quot;</span>, model_run_name, <span class="st">&quot;.tex&quot;</span>)</a>
+<a class="sourceLine" id="cb3-28" title="28">  <span class="kw">system</span>(call)</a>
+<a class="sourceLine" id="cb3-29" title="29">  <span class="kw">system</span>(call) <span class="co"># 2nd run to apply citation numbers</span></a>
+<a class="sourceLine" id="cb3-30" title="30">}</a></code></pre></div>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiVGhlIHdvcmtpbmcgZGlyZWN0b3J5IHdhcyBjaGFuZ2VkIHRvIEM6L01pY2hlbGxlL01ldGFkYXRhL3Rlc3QgaW5zaWRlIGEgbm90ZWJvb2sgY2h1bmsuIFRoZSB3b3JraW5nIGRpcmVjdG9yeSB3aWxsIGJlIHJlc2V0IHdoZW4gdGhlIGNodW5rIGlzIGZpbmlzaGVkIHJ1bm5pbmcuIFVzZSB0aGUga25pdHIgcm9vdC5kaXIgb3B0aW9uIGluIHRoZSBzZXR1cCBjaHVuayB0byBjaGFuZ2UgdGhlIHdvcmtpbmcgZGlyZWN0b3J5IGZvciBub3RlYm9vayBjaHVua3MuXG4ifQ== -->
-<pre><code>The working directory was changed to C:/Michelle/Metadata/test inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW4ubWV0YSA8LSByZWFkX3hsc3goeGxzLCBjb2xfdHlwZXMgPSBcInRleHRcIilcblxuZm9yIChpIGluIDE6bnJvdyhpbi5tZXRhKSl7XG4gIHNkbS5zY2luYW1lIDwtIGluLm1ldGEkU2NpTmFtZVtpXVxuICBzZG0uY29tbmFtZSA8LSBpbi5tZXRhJENvbW1OYW1lW2ldXG4gIHJlc3VsdHNfc2hhcGUgPC0gcmFzdGVyKHBhc3RlKG1vZGVscy5kaXIsIGluLm1ldGEkRmlsZW5hbWVbaV0sIHNlcCA9IFwiL1wiKSlcbiAgcmFzZXh0IDwtIGV4dGVudChyZXN1bHRzX3NoYXBlKVxuICB4MSA8LSByYXNleHRbMV0gLSAocmFzZXh0WzFdICogMC4wMSlcbiAgeDIgPC0gcmFzZXh0WzJdICsgKHJhc2V4dFsyXSAqIDAuMDEpXG4gIHkxIDwtIHJhc2V4dFszXSAtIChyYXNleHRbM10gKiAwLjAxKVxuICB5MiA8LSByYXNleHRbNF0gKyAocmFzZXh0WzRdICogMC4wMSlcbiAgTlN1cmwgPC0gcGFzdGUoXCJodHRwOi8vZXhwbG9yZXIubmF0dXJlc2VydmUub3JnL3NlcnZsZXQvTmF0dXJlU2VydmU/c2VhcmNoTmFtZT1cIixnc3ViKFwiIFwiLCBcIitcIiwgc2RtLnNjaW5hbWUsIGZpeGVkPVRSVUUpLCBzZXA9XCJcIilcbiAgbiA8LSBuY2hhcihpbi5tZXRhJEZpbGVuYW1lW2ldKVxuICBtb2RlbF9ydW5fbmFtZSA8LSBzdWJzdHIoaW4ubWV0YSRGaWxlbmFtZVtpXSwgMSwgbi00KVxuICBzZG0uY29kZTEgPC0gaW4ubWV0YSRDb2RlMVtpXVxuICBzZG0uY29kZTIgPC0gaW4ubWV0YSRDb2RlMltpXVxuICBzZG0uZ3JhbmsgPC0gaW4ubWV0YSRHcmFua1tpXVxuICBzZG0ubW9kZWxlciA8LSBwYXN0ZShpbi5tZXRhJENvbnRhY3ROYW1lW2ldLCBpbi5tZXRhJENvbnRhY3RFbWFpbFtpXSwgaW4ubWV0YSRDb250YWN0T3JnW2ldLCBzZXAgPSBcIiwgXCIpXG4gIHNkbS5wcm9ncmFtIDwtIGluLm1ldGEkQ29udGFjdE9yZ1tpXVxuICBzZG0uaW5wdXRzIDwtIGluLm1ldGEkSW5wdXRzW2ldXG4gIHNkbS5zb3VyY2UgPC0gaW4ubWV0YSRJbnB1dFNvdXJjZVxuICBzZG0ubm90ZXMgPC0gaW4ubWV0YSROb3Rlc1tpXVxuICBzZG0ucmV2aWV3IDwtIGluLm1ldGEkUmV2aWV3ZWRbaV1cbiAgc2RtLmZpbmFsIDwtIGluLm1ldGEkRmluYWxbaV1cbiAga25pdChwYXN0ZSh3b3JraW5nLmRpcixcIlNpbXBsaWZpZWRNZXRhZGF0YV9rbml0ci5ybndcIixzZXA9XCIvXCIpLCBvdXRwdXQ9cGFzdGUobW9kZWxfcnVuX25hbWUsIFwiLnRleFwiLHNlcD1cIlwiKSlcbiAgY2FsbCA8LSBwYXN0ZTAoXCJwZGZsYXRleCAtaW50ZXJhY3Rpb249bm9uc3RvcG1vZGUgXCIsIG1vZGVsX3J1bl9uYW1lLCBcIi50ZXhcIilcbiAgc3lzdGVtKGNhbGwpXG59XG5gYGAifQ== -->
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">in.meta &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(xls, <span class="dt">col_types =</span> <span class="st">&quot;text&quot;</span>)</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(in.meta)){</a>
-<a class="sourceLine" id="cb5-4" title="4">  sdm.sciname &lt;-<span class="st"> </span>in.meta<span class="op">$</span>SciName[i]</a>
-<a class="sourceLine" id="cb5-5" title="5">  sdm.comname &lt;-<span class="st"> </span>in.meta<span class="op">$</span>CommName[i]</a>
-<a class="sourceLine" id="cb5-6" title="6">  results_shape &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="kw">paste</span>(models.dir, in.meta<span class="op">$</span>Filename[i], <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>))</a>
-<a class="sourceLine" id="cb5-7" title="7">  rasext &lt;-<span class="st"> </span><span class="kw">extent</span>(results_shape)</a>
-<a class="sourceLine" id="cb5-8" title="8">  x1 &lt;-<span class="st"> </span>rasext[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>(rasext[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
-<a class="sourceLine" id="cb5-9" title="9">  x2 &lt;-<span class="st"> </span>rasext[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>(rasext[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
-<a class="sourceLine" id="cb5-10" title="10">  y1 &lt;-<span class="st"> </span>rasext[<span class="dv">3</span>] <span class="op">-</span><span class="st"> </span>(rasext[<span class="dv">3</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
-<a class="sourceLine" id="cb5-11" title="11">  y2 &lt;-<span class="st"> </span>rasext[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>(rasext[<span class="dv">4</span>] <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)</a>
-<a class="sourceLine" id="cb5-12" title="12">  NSurl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;http://explorer.natureserve.org/servlet/NatureServe?searchName=&quot;</span>,<span class="kw">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;+&quot;</span>, sdm.sciname, <span class="dt">fixed=</span><span class="ot">TRUE</span>), <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb5-13" title="13">  n &lt;-<span class="st"> </span><span class="kw">nchar</span>(in.meta<span class="op">$</span>Filename[i])</a>
-<a class="sourceLine" id="cb5-14" title="14">  model_run_name &lt;-<span class="st"> </span><span class="kw">substr</span>(in.meta<span class="op">$</span>Filename[i], <span class="dv">1</span>, n<span class="dv">-4</span>)</a>
-<a class="sourceLine" id="cb5-15" title="15">  sdm.code1 &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Code1[i]</a>
-<a class="sourceLine" id="cb5-16" title="16">  sdm.code2 &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Code2[i]</a>
-<a class="sourceLine" id="cb5-17" title="17">  sdm.grank &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Grank[i]</a>
-<a class="sourceLine" id="cb5-18" title="18">  sdm.modeler &lt;-<span class="st"> </span><span class="kw">paste</span>(in.meta<span class="op">$</span>ContactName[i], in.meta<span class="op">$</span>ContactEmail[i], in.meta<span class="op">$</span>ContactOrg[i], <span class="dt">sep =</span> <span class="st">&quot;, &quot;</span>)</a>
-<a class="sourceLine" id="cb5-19" title="19">  sdm.program &lt;-<span class="st"> </span>in.meta<span class="op">$</span>ContactOrg[i]</a>
-<a class="sourceLine" id="cb5-20" title="20">  sdm.inputs &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Inputs[i]</a>
-<a class="sourceLine" id="cb5-21" title="21">  sdm.source &lt;-<span class="st"> </span>in.meta<span class="op">$</span>InputSource</a>
-<a class="sourceLine" id="cb5-22" title="22">  sdm.notes &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Notes[i]</a>
-<a class="sourceLine" id="cb5-23" title="23">  sdm.review &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Reviewed[i]</a>
-<a class="sourceLine" id="cb5-24" title="24">  sdm.final &lt;-<span class="st"> </span>in.meta<span class="op">$</span>Final[i]</a>
-<a class="sourceLine" id="cb5-25" title="25">  <span class="kw">knit</span>(<span class="kw">paste</span>(working.dir,<span class="st">&quot;SimplifiedMetadata_knitr.rnw&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;/&quot;</span>), <span class="dt">output=</span><span class="kw">paste</span>(model_run_name, <span class="st">&quot;.tex&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>))</a>
-<a class="sourceLine" id="cb5-26" title="26">  call &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;pdflatex -interaction=nonstopmode &quot;</span>, model_run_name, <span class="st">&quot;.tex&quot;</span>)</a>
-<a class="sourceLine" id="cb5-27" title="27">  <span class="kw">system</span>(call)</a>
-<a class="sourceLine" id="cb5-28" title="28">}</a></code></pre></div>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cbnByb2Nlc3NpbmcgZmlsZTogQzovTWljaGVsbGUvTWV0YWRhdGEvdGVzdC9TaW1wbGlmaWVkTWV0YWRhdGFfa25pdHIucm53XG4ifQ== -->
-<pre><code>
-
-processing file: C:/Michelle/Metadata/test/SimplifiedMetadata_knitr.rnw</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMCVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA5JVxuICAgaW5saW5lIFIgY29kZSBmcmFnbWVudHNcblxuXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAxOCVcbmxhYmVsOiB0aGVybW9tZXRlcjEgKHdpdGggb3B0aW9ucykgXG5MaXN0IG9mIDRcbiAkIGZpZy5oZWlnaHQ6IG51bSAxXG4gJCBmaWcud2lkdGggOiBudW0gMVxuICQgaW5jbHVkZSAgIDogbG9naSBGQUxTRVxuICQgZWNobyAgICAgIDogbG9naSBGQUxTRVxuXG5cbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDI3JVxuICAgaW5saW5lIFIgY29kZSBmcmFnbWVudHNcblxuXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAzNiVcbmxhYmVsOiBjaGVja0V2YWxFeGlzdHMgKHdpdGggb3B0aW9ucykgXG5MaXN0IG9mIDNcbiAkIGluY2x1ZGU6IGxvZ2kgRkFMU0VcbiAkIGVjaG8gICA6IGxvZ2kgRkFMU0VcbiAkIGluZGVudCA6IGNociBcIiAgICBcIlxuXG5cbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDQ1JVxuICBvcmRpbmFyeSB0ZXh0IHdpdGhvdXQgUiBjb2RlXG5cblxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgNTUlXG5sYWJlbDogRXZhbFRleHRQcmludCAod2l0aCBvcHRpb25zKSBcbkxpc3Qgb2YgMlxuICQgcmVzdWx0czogY2hyIFwiYXNpc1wiXG4gJCBlY2hvICAgOiBsb2dpIEZBTFNFXG5cblxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgfCAgNjQlXG4gICBpbmxpbmUgUiBjb2RlIGZyYWdtZW50c1xuXG5cbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgICAgICAgIHwgIDczJVxubGFiZWw6IG1hcEZpZyAod2l0aCBvcHRpb25zKSBcbkxpc3Qgb2YgNlxuICQgaW5jbHVkZSAgIDogbG9naSBGQUxTRVxuICQgZWNobyAgICAgIDogbG9naSBGQUxTRVxuICQgZGV2ICAgICAgIDogY2hyIFwicG5nXCJcbiAkIGZpZy5oZWlnaHQ6IG51bSA4XG4gJCBmaWcud2lkdGggOiBudW0gN1xuICQgZHBpICAgICAgIDogbnVtIDMwMFxuXG5cbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgIHwgIDgyJVxuICBvcmRpbmFyeSB0ZXh0IHdpdGhvdXQgUiBjb2RlXG5cblxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgfCAgOTElXG5sYWJlbDogRGF0YVNvdXJjZXNMaXN0ICh3aXRoIG9wdGlvbnMpIFxuTGlzdCBvZiAyXG4gJCByZXN1bHRzOiBjaHIgXCJhc2lzXCJcbiAkIGVjaG8gICA6IGxvZ2kgRkFMU0VcblxuXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi58IDEwMCVcbiAgIGlubGluZSBSIGNvZGUgZnJhZ21lbnRzXG5cblxuVGhpcyBpcyBwZGZUZVgsIFZlcnNpb24gMy4xNDE1OTI2NS0yLjYtMS40MC4yMCAoTWlLVGVYIDIuOS43MDAwIDY0LWJpdClcbmVudGVyaW5nIGV4dGVuZGVkIG1vZGVcbihvY2VhaG9tb19BbHRNYXBfMjAxOTAyMjgudGV4XG5MYVRlWDJlIDwyMDE4LTEyLTAxPlxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9iYXNlXFxhcnRpY2xlLmNsc1wiXG5Eb2N1bWVudCBDbGFzczogYXJ0aWNsZSAyMDE4LzA5LzAzIHYxLjRpIFN0YW5kYXJkIExhVGVYIGRvY3VtZW50IGNsYXNzXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2Jhc2VcXHNpemUxMC5jbG9cIikpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2dyYXBoaWNzXFxncmFwaGljeC5zdHlcIlxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9ncmFwaGljc1xca2V5dmFsLnN0eVwiKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9ncmFwaGljc1xcZ3JhcGhpY3Muc3R5XCJcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvZ3JhcGhpY3NcXHRyaWcuc3R5XCIpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2dyYXBoaWNzLWNmZ1xcZ3JhcGhpY3MuY2ZnXCIpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2dyYXBoaWNzLWRlZlxccGRmdGV4LmRlZlwiKSkpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2dyYXBoaWNzXFxjb2xvci5zdHlcIlxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9ncmFwaGljcy1jZmdcXGNvbG9yLmNmZ1wiKSlcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvZnJhbWVkXFxmcmFtZWQuc3R5XCIpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2Jhc2VcXGFsbHR0LnN0eVwiKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9iYXNlXFxpbnB1dGVuYy5zdHlcIilcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvZ2VvbWV0cnlcXGdlb21ldHJ5LnN0eVwiXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2dlbmVyaWMvb2JlcmRpZWtcXGlmcGRmLnN0eVwiKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9nZW5lcmljL29iZXJkaWVrXFxpZnZ0ZXguc3R5XCIpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2dlbmVyaWMvaWZ4ZXRleFxcaWZ4ZXRleC5zdHlcIilcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvZ2VvbWV0cnlcXGdlb21ldHJ5LmNmZ1wiKSlcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvZmFuY3loZHJcXGZhbmN5aGRyLnN0eVwiKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC91bmRlcnNjb3JlXFx1bmRlcnNjb3JlLnN0eVwiKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9ncmFwaGljc1xccm90YXRpbmcuc3R5XCJcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvYmFzZVxcaWZ0aGVuLnN0eVwiKSlcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvbmF0YmliXFxuYXRiaWIuc3R5XCIpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2h5cGVycmVmXFxoeXBlcnJlZi5zdHlcIlxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9nZW5lcmljL29iZXJkaWVrXFxob2JzdWItaHlwZXJyZWYuc3R5XCJcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvZ2VuZXJpYy9vYmVyZGlla1xcaG9ic3ViLWdlbmVyaWMuc3R5XCIpKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9vYmVyZGlla1xcYXV4aG9vay5zdHlcIilcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvb2JlcmRpZWtcXGt2b3B0aW9ucy5zdHlcIilcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvaHlwZXJyZWZcXHBkMWVuYy5kZWZcIilcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvMDBtaWt0ZXhcXGh5cGVycmVmLmNmZ1wiKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC91cmxcXHVybC5zdHlcIikpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2h5cGVycmVmXFxocGRmdGV4LmRlZlwiXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L29iZXJkaWVrXFxyZXJ1bmZpbGVjaGVjay5zdHlcIikpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L2NhcHRpb25cXGNhcHRpb24uc3R5XCJcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvY2FwdGlvblxcY2FwdGlvbjMuc3R5XCIpKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC94Y29sb3JcXHhjb2xvci5zdHlcIlxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9ncmFwaGljcy1jZmdcXGNvbG9yLmNmZ1wiKVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9sYXRleC9jb2xvcnRibFxcY29sb3J0Ymwuc3R5XCJcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvdG9vbHNcXGFycmF5LnN0eVwiKSkpXG4oXCJDOlxcUHJvZ3JhbSBGaWxlc1xcTWlLVGVYIDIuOVxcdGV4L2xhdGV4L211bHRpcm93XFxtdWx0aXJvdy5zdHlcIilcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvdWxlbVxcdWxlbS5zdHlcIilcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvdXBxdW90ZVxcdXBxdW90ZS5zdHlcIilcbihvY2VhaG9tb19BbHRNYXBfMjAxOTAyMjguYXV4KVxuKFwiQzpcXFByb2dyYW0gRmlsZXNcXE1pS1RlWCAyLjlcXHRleC9jb250ZXh0L2Jhc2UvbWtpaVxcc3VwcC1wZGYubWtpaVwiXG5bTG9hZGluZyBNUFMgdG8gUERGIGNvbnZlcnRlciAodmVyc2lvbiAyMDA2LjA5LjAyKS5dXG4pIChcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvb2JlcmRpZWtcXGVwc3RvcGRmLWJhc2Uuc3R5XCJcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvb2JlcmRpZWtcXGdyZmV4dC5zdHlcIikpXG4qZ2VvbWV0cnkqIGRyaXZlcjogYXV0by1kZXRlY3RpbmdcbipnZW9tZXRyeSogZGV0ZWN0ZWQgZHJpdmVyOiBwZGZ0ZXhcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvbGF0ZXgvaHlwZXJyZWZcXG5hbWVyZWYuc3R5XCJcbihcIkM6XFxQcm9ncmFtIEZpbGVzXFxNaUtUZVggMi45XFx0ZXgvZ2VuZXJpYy9vYmVyZGlla1xcZ2V0dGl0bGVzdHJpbmcuc3R5XCIpKVxuKG9jZWFob21vX0FsdE1hcF8yMDE5MDIyOC5vdXQpIChvY2VhaG9tb19BbHRNYXBfMjAxOTAyMjgub3V0KVxuVW5kZXJmdWxsIFxcaGJveCAoYmFkbmVzcyAxMDAwMCkgaW4gcGFyYWdyYXBoIGF0IGxpbmVzIDExMC0tMTE3XG5cblxuVW5kZXJmdWxsIFxcaGJveCAoYmFkbmVzcyAxMDAwMCkgaW4gcGFyYWdyYXBoIGF0IGxpbmVzIDExMC0tMTE3XG5cblxuVW5kZXJmdWxsIFxcaGJveCAoYmFkbmVzcyAxMDAwMCkgaW4gcGFyYWdyYXBoIGF0IGxpbmVzIDExMC0tMTE3XG5cblxuVW5kZXJmdWxsIFxcaGJveCAoYmFkbmVzcyAxMDAwMCkgaW4gcGFyYWdyYXBoIGF0IGxpbmVzIDExMC0tMTE3XG5cblxuVW5kZXJmdWxsIFxcaGJveCAoYmFkbmVzcyAxMDAwMCkgaW4gcGFyYWdyYXBoIGF0IGxpbmVzIDExMC0tMTE3XG5cblsxe0M6L1VzZXJzL2ZpbmttLkNOSFAySy9BcHBEYXRhL0xvY2FsL01pS1RlWC8yLjkvcGRmdGV4L2NvbmZpZy9wZGZ0ZXgubWFwfSA8Li9cbmZpZ3VyZS90aGVybW9tZXRlcjEtMS5wZGY+XVxuVW5kZXJmdWxsIFxcaGJveCAoYmFkbmVzcyAxMDAwMCkgaW4gcGFyYWdyYXBoIGF0IGxpbmVzIDEyOC0tMTM0XG5cblsyXSBbMyA8Li9maWd1cmUvbWFwRmlnLTEucG5nPl1cblxuISBMYVRlWCBFcnJvcjogU29tZXRoaW5nJ3Mgd3JvbmctLXBlcmhhcHMgYSBtaXNzaW5nIFxcaXRlbS5cblxuU2VlIHRoZSBMYVRlWCBtYW51YWwgb3IgTGFUZVggQ29tcGFuaW9uIGZvciBleHBsYW5hdGlvbi5cblR5cGUgIEggPHJldHVybj4gIGZvciBpbW1lZGlhdGUgaGVscC5cbiAuLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxubC4xODUgXFxlbmR7aXRlbWl6ZX1cbiAgICAgICAgICAgICAgICAgICBcblxuVW5kZXJmdWxsIFxcaGJveCAoYmFkbmVzcyAxMDAwMCkgaW4gcGFyYWdyYXBoIGF0IGxpbmVzIDE4OC0tMTk0XG5cbls0XSAob2NlYWhvbW9fQWx0TWFwXzIwMTkwMjI4LmF1eCkgKVxuKHNlZSB0aGUgdHJhbnNjcmlwdCBmaWxlIGZvciBhZGRpdGlvbmFsIGluZm9ybWF0aW9uKTxDOi9Qcm9ncmFtIEZpbGVzL01pS1RlWCAyLlxuOS9mb250cy90eXBlMS9wdWJsaWMvYW1zZm9udHMvY20vY21ieDEwLnBmYj48QzovUHJvZ3JhbSBGaWxlcy9NaUtUZVggMi45L2ZvbnRzL1xudHlwZTEvcHVibGljL2Ftc2ZvbnRzL2NtL2NtcjEwLnBmYj48QzovUHJvZ3JhbSBGaWxlcy9NaUtUZVggMi45L2ZvbnRzL3R5cGUxL3B1YlxubGljL2Ftc2ZvbnRzL2NtL2NtcjcucGZiPjxDOi9Qcm9ncmFtIEZpbGVzL01pS1RlWCAyLjkvZm9udHMvdHlwZTEvcHVibGljL2Ftc2ZvblxudHMvY20vY21yOS5wZmI+PEM6L1Byb2dyYW0gRmlsZXMvTWlLVGVYIDIuOS9mb250cy90eXBlMS9wdWJsaWMvYW1zZm9udHMvY20vY210aVxuMTAucGZiPjxDOi9Qcm9ncmFtIEZpbGVzL01pS1RlWCAyLjkvZm9udHMvdHlwZTEvcHVibGljL2Ftc2ZvbnRzL2NtL2NtdGkxMi5wZmI+PFxuQzovUHJvZ3JhbSBGaWxlcy9NaUtUZVggMi45L2ZvbnRzL3R5cGUxL3B1YmxpYy9hbXNmb250cy9jbS9jbXRpOS5wZmI+XG5PdXRwdXQgd3JpdHRlbiBvbiBvY2VhaG9tb19BbHRNYXBfMjAxOTAyMjgucGRmICg0IHBhZ2VzLCAxNTg3OTUgYnl0ZXMpLlxuVHJhbnNjcmlwdCB3cml0dGVuIG9uIG9jZWFob21vX0FsdE1hcF8yMDE5MDIyOC5sb2cuXG4ifQ== -->
-<pre><code>
-  |                                                                       
-  |                                                                 |   0%
-  |                                                                       
-  |......                                                           |   9%
-   inline R code fragments
-
-
-  |                                                                       
-  |............                                                     |  18%
-label: thermometer1 (with options) 
-List of 4
- $ fig.height: num 1
- $ fig.width : num 1
- $ include   : logi FALSE
- $ echo      : logi FALSE
-
-
-  |                                                                       
-  |..................                                               |  27%
-   inline R code fragments
-
-
-  |                                                                       
-  |........................                                         |  36%
-label: checkEvalExists (with options) 
-List of 3
- $ include: logi FALSE
- $ echo   : logi FALSE
- $ indent : chr &quot;    &quot;
-
-
-  |                                                                       
-  |..............................                                   |  45%
-  ordinary text without R code
-
-
-  |                                                                       
-  |...................................                              |  55%
-label: EvalTextPrint (with options) 
-List of 2
- $ results: chr &quot;asis&quot;
- $ echo   : logi FALSE
-
-
-  |                                                                       
-  |.........................................                        |  64%
-   inline R code fragments
-
-
-  |                                                                       
-  |...............................................                  |  73%
-label: mapFig (with options) 
-List of 6
- $ include   : logi FALSE
- $ echo      : logi FALSE
- $ dev       : chr &quot;png&quot;
- $ fig.height: num 8
- $ fig.width : num 7
- $ dpi       : num 300
-
-
-  |                                                                       
-  |.....................................................            |  82%
-  ordinary text without R code
-
-
-  |                                                                       
-  |...........................................................      |  91%
-label: DataSourcesList (with options) 
-List of 2
- $ results: chr &quot;asis&quot;
- $ echo   : logi FALSE
-
-
-  |                                                                       
-  |.................................................................| 100%
-   inline R code fragments
-
-
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit)
-entering extended mode
-(oceahomo_AltMap_20190228.tex
-LaTeX2e &lt;2018-12-01&gt;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/base\article.cls&quot;
-Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/base\size10.clo&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphicx.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics\keyval.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphics.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics\trig.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics-cfg\graphics.cfg&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics-def\pdftex.def&quot;)))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics\color.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics-cfg\color.cfg&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/framed\framed.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/base\alltt.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/base\inputenc.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\ifvtex.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/generic/ifxetex\ifxetex.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.cfg&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/fancyhdr\fancyhdr.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/underscore\underscore.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics\rotating.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/base\ifthen.sty&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/natbib\natbib.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\hyperref.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\hobsub-hyperref.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\hobsub-generic.sty&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\auxhook.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\kvoptions.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\pd1enc.def&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/00miktex\hyperref.cfg&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/url\url.sty&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\hpdftex.def&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\rerunfilecheck.sty&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/caption\caption.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/caption\caption3.sty&quot;))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/graphics-cfg\color.cfg&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/colortbl\colortbl.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/tools\array.sty&quot;)))
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/multirow\multirow.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/ulem\ulem.sty&quot;)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/upquote\upquote.sty&quot;)
-(oceahomo_AltMap_20190228.aux)
-(&quot;C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii&quot;
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (&quot;C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\grfext.sty&quot;))
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-(&quot;C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty&quot;
-(&quot;C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\gettitlestring.sty&quot;))
-(oceahomo_AltMap_20190228.out) (oceahomo_AltMap_20190228.out)
-Underfull \hbox (badness 10000) in paragraph at lines 110--117
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--117
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--117
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--117
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--117
-
-[1{C:/Users/finkm.CNHP2K/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} &lt;./
-figure/thermometer1-1.pdf&gt;]
-Underfull \hbox (badness 10000) in paragraph at lines 128--134
-
-[2] [3 &lt;./figure/mapFig-1.png&gt;]
-
-! LaTeX Error: Something&#39;s wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H &lt;return&gt;  for immediate help.
- ...                                              
-                                                  
-l.185 \end{itemize}
-                   
-
-Underfull \hbox (badness 10000) in paragraph at lines 188--194
-
-[4] (oceahomo_AltMap_20190228.aux) )
-(see the transcript file for additional information)&lt;C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmbx10.pfb&gt;&lt;C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr10.pfb&gt;&lt;C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb&gt;&lt;C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmr9.pfb&gt;&lt;C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
-10.pfb&gt;&lt;C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb&gt;&lt;
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb&gt;
-Output written on oceahomo_AltMap_20190228.pdf (4 pages, 158795 bytes).
-Transcript written on oceahomo_AltMap_20190228.log.</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p><strong>N.B.</strong> I just barely know how to use Markdown, LaTeX is a bit beyond me. So someone please fix this up.</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNpbXBsaWZpZWQgTWV0YWRhdGEiDQpvdXRwdXQ6IA0KICBodG1sX25vdGVib29rOiANCiAgICBoaWdobGlnaHQ6IHRhbmdvDQogICAgdGhlbWU6IHJlYWRhYmxlDQphdXRob3I6IE1pY2hlbGxlIE0uIEZpbmssIHVzaW5nIGNvZGUgZnJvbSBDaHJpcyBUcmFjZXkgJiBUaW0gSG93YXJkDQotLS0NCiMjIyMgTGFzdCByZXZpc2VkOiBgciBTeXMuRGF0ZSgpYA0KIyMjIyBCdWlsdCBvbiBSIGByIGdldFJ2ZXJzaW9uKClgDQoNCiMjIyAxLiBSZXF1aXJlZCB0byBydW4gdGhlIGNvZGU6ICANCmBgYHtyLCBtZXNzYWdlPUZBTFNFLCB3YXJuaW5nPUZBTFNFfQ0KbGlicmFyeShrbml0cikNCmxpYnJhcnkoc2YpDQpsaWJyYXJ5KHJhc3RlcikNCmxpYnJhcnkoeHRhYmxlKQ0KbGlicmFyeSh0aW55dGV4KQ0KbGlicmFyeShzdHJpbmdpKQ0KbGlicmFyeSh0YWJsZXMpDQpsaWJyYXJ5KHJlYWR4bCkNCmBgYA0KKE5vdCBzdXJlIGFsbCBvZiB0aGVzZSBeIHBhY2thZ2VzIGFyZSBzdGlsbCB1c2VkIHdpdGggdGhlIG1vZGlmaWVkIGNvZGUuKQ0KDQoNCisgU2ltcGxpZmllZE1ldGFkYXRhX2tuaXRyLnJudw0KKyBtZXRhZGF0YV9pbnB1dHMueGxzeA0KKyBNaWtUZXggaW5zdGFsbGVkLCBzZWUgaHR0cDovL21pa3RleC5vcmcvDQoNCg0KIyMjIDIuIFRoZSBzcHJlYWRzaGVldCBjb250YWlucyBtZXRhZGF0YSBpbmZvIHRoYXQgd2Ugd2FudCB0byBrbml0IGludG8gYW4gYWJicmV2aWF0ZWQgdmVyc2lvbiBvZiB0aGUgTW9CSSBtZXRhZGF0YQ0KU3ByZWFkc2hlZXQgY29udGFpbnMgMSB0YWIgd2l0aDogIA0KDQorIFNjaW5hbWUgIA0KKyBDb21tTmFtZQ0KKyBDb2RlMSAoc3BlY2llcyBjb2RlKQ0KKyBDb2RlMiAoRWxlbWVudCBJRCkgIA0KKyBHcmFuayAocm91bmRlZCkNCisgSW5wdXRzICANCisgSW5wdXRTb3VyY2UgIA0KKyBGaWxlbmFtZSAgDQorIENvbnRhY3ROYW1lICANCisgQ29udGFjdE9yZyAgDQorIENvbnRhY3RFbWFpbCAgDQorIE5vdGVzIChiYXNpYyBtZXRob2RzKSAgDQorIFJldmlld2VkICANCisgRmluYWwgIA0KICANCiMjIyAzLiBTZXQgdGhlIHZhcmlhYmxlczoNCih5b3Ugd2lsbCB3YW50IHRvIGNoYW5nZSB0aGVzZSkNCmBgYHtyfQ0Kd29ya2luZy5kaXIgPC0gIkM6L01pY2hlbGxlL01ldGFkYXRhL3Rlc3QiDQpiYXNlbGF5ZXJzLmRpciA8LSAiRDovR0lTL0Jhc2UvVVNBIg0KbW9kZWxzLmRpciA8LSAiTTovR0lTX1Byb2plY3RzL01PQkkiDQp4bHMgPC0gIm1ldGFkYXRhX2lucHV0cy54bHN4Ig0KDQpyYW5rcyA8LSBsaXN0KCJDcml0aWNhbGx5IEltcGVyaWxlZCIsICJJbXBlcmlsZWQiLCAiVnVsbmVyYWJsZSIsICJBcHBhcmVudGx5IFNlY3VyZSIsICJTZWN1cmUiKQ0KbmFtZXMocmFua3MpIDwtIGMoIkcxIiwgIkcyIiwgIkczIiwgIkc0IiwgIkc1IikNCnN0YXRlcyA8LSBwYXN0ZShiYXNlbGF5ZXJzLmRpciwgIlNUQVRFUy5zaHAiLCBzZXAgPSAiLyIpDQpjb3VudGllcyA8LSBwYXN0ZShiYXNlbGF5ZXJzLmRpciwgIkNPVU5USUVTLnNocCIsIHNlcCA9ICIvIikNCnNmc3RhdGVzIDwtIHN0X3JlYWQoc3RhdGVzLCBxdWlldCA9IFQpDQpzZmNvdW50aWVzIDwtIHN0X3JlYWQoY291bnRpZXMsIHF1aWV0ID0gVCkNCmBgYA0KDQojIyMgNC4gUmVhZCBlYWNoIHJlY29yZCBpbiB0aGUgc3ByZWFkc2hlZXQgYW5kIHBhc3MgdG8ga25pdHINCmBgYHtyfQ0Kc2V0d2Qod29ya2luZy5kaXIpDQppbi5tZXRhIDwtIHJlYWRfeGxzeCh4bHMsIGNvbF90eXBlcyA9ICJ0ZXh0IikNCg0KZm9yIChpIGluIDE6bnJvdyhpbi5tZXRhKSl7DQogIHNkbS5zY2luYW1lIDwtIGluLm1ldGEkU2NpTmFtZVtpXQ0KICBzZG0uY29tbmFtZSA8LSBpbi5tZXRhJENvbW1OYW1lW2ldDQogIHJlc3VsdHNfc2hhcGUgPC0gcmFzdGVyKHBhc3RlKG1vZGVscy5kaXIsIGluLm1ldGEkRmlsZW5hbWVbaV0sIHNlcCA9ICIvIikpDQogIHJhc2V4dCA8LSBleHRlbnQocmVzdWx0c19zaGFwZSkNCiAgeDEgPC0gcmFzZXh0WzFdIC0gKHJhc2V4dFsxXSAqIDAuMDEpDQogIHgyIDwtIHJhc2V4dFsyXSArIChyYXNleHRbMl0gKiAwLjAxKQ0KICB5MSA8LSByYXNleHRbM10gLSAocmFzZXh0WzNdICogMC4wMSkNCiAgeTIgPC0gcmFzZXh0WzRdICsgKHJhc2V4dFs0XSAqIDAuMDEpDQogIE5TdXJsIDwtIHBhc3RlKCJodHRwOi8vZXhwbG9yZXIubmF0dXJlc2VydmUub3JnL3NlcnZsZXQvTmF0dXJlU2VydmU/c2VhcmNoTmFtZT0iLGdzdWIoIiAiLCAiKyIsIHNkbS5zY2luYW1lLCBmaXhlZD1UUlVFKSwgc2VwPSIiKQ0KICBuIDwtIG5jaGFyKGluLm1ldGEkRmlsZW5hbWVbaV0pDQogIG1vZGVsX3J1bl9uYW1lIDwtIHN1YnN0cihpbi5tZXRhJEZpbGVuYW1lW2ldLCAxLCBuLTQpDQogIHNkbS5jb2RlMSA8LSBpbi5tZXRhJENvZGUxW2ldDQogIHNkbS5jb2RlMiA8LSBpbi5tZXRhJENvZGUyW2ldDQogIHNkbS5ncmFuayA8LSBpbi5tZXRhJEdyYW5rW2ldDQogIHNkbS5tb2RlbGVyIDwtIHBhc3RlKGluLm1ldGEkQ29udGFjdE5hbWVbaV0sIGluLm1ldGEkQ29udGFjdEVtYWlsW2ldLCBpbi5tZXRhJENvbnRhY3RPcmdbaV0sIHNlcCA9ICIsICIpDQogIHNkbS5wcm9ncmFtIDwtIGluLm1ldGEkQ29udGFjdE9yZ1tpXQ0KICBzZG0uaW5wdXRzIDwtIGluLm1ldGEkSW5wdXRzW2ldDQogIHNkbS5zb3VyY2UgPC0gaW4ubWV0YSRJbnB1dFNvdXJjZQ0KICBzZG0ubm90ZXMgPC0gaW4ubWV0YSROb3Rlc1tpXQ0KICBzZG0ucmV2aWV3IDwtIGluLm1ldGEkUmV2aWV3ZWRbaV0NCiAgc2RtLmZpbmFsIDwtIGluLm1ldGEkRmluYWxbaV0NCiAga25pdChwYXN0ZSh3b3JraW5nLmRpciwiU2ltcGxpZmllZE1ldGFkYXRhX2tuaXRyLnJudyIsc2VwPSIvIiksIG91dHB1dD1wYXN0ZShtb2RlbF9ydW5fbmFtZSwgIi50ZXgiLHNlcD0iIikpDQogIGNhbGwgPC0gcGFzdGUwKCJwZGZsYXRleCAtaW50ZXJhY3Rpb249bm9uc3RvcG1vZGUgIiwgbW9kZWxfcnVuX25hbWUsICIudGV4IikNCiAgc3lzdGVtKGNhbGwpDQp9DQpgYGANCg0KKipOLkIuKiogSSBqdXN0IGJhcmVseSBrbm93IGhvdyB0byB1c2UgTWFya2Rvd24sIExhVGVYIGlzIGEgYml0IGJleW9uZCBtZS4gU28gc29tZW9uZSBwbGVhc2UgZml4IHRoaXMgdXAu</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNpbXBsaWZpZWQgTWV0YWRhdGEiDQpvdXRwdXQ6IA0KICBodG1sX25vdGVib29rOiANCiAgICBoaWdobGlnaHQ6IHRhbmdvDQogICAgdGhlbWU6IHJlYWRhYmxlDQphdXRob3I6IE1pY2hlbGxlIE0uIEZpbmssIHVzaW5nIGNvZGUgZnJvbSBDaHJpcyBUcmFjZXkgJiBUaW0gSG93YXJkDQotLS0NCiMjIyMgTGFzdCByZXZpc2VkOiBgciBTeXMuRGF0ZSgpYA0KIyMjIyBCdWlsdCBvbiBSIGByIGdldFJ2ZXJzaW9uKClgDQoNCiMjIyAxLiBSZXF1aXJlZCB0byBydW4gdGhlIGNvZGU6ICANCmBgYHtyLCBtZXNzYWdlPUZBTFNFLCB3YXJuaW5nPUZBTFNFfQ0KbGlicmFyeShrbml0cikNCmxpYnJhcnkoc2YpDQpsaWJyYXJ5KHJhc3RlcikNCmxpYnJhcnkoeHRhYmxlKQ0KbGlicmFyeSh0aW55dGV4KQ0KbGlicmFyeShzdHJpbmdyKQ0KbGlicmFyeSh0YWJsZXMpDQpsaWJyYXJ5KHJlYWR4bCkNCmBgYA0KKE5vdCBzdXJlIGFsbCBvZiB0aGVzZSBeIHBhY2thZ2VzIGFyZSBzdGlsbCB1c2VkIHdpdGggdGhlIG1vZGlmaWVkIGNvZGUuKQ0KDQoNCisgU2ltcGxpZmllZE1ldGFkYXRhX2tuaXRyLnJudw0KKyBtZXRhZGF0YV9pbnB1dHMueGxzeA0KKyBNaWtUZXggaW5zdGFsbGVkLCBzZWUgaHR0cDovL21pa3RleC5vcmcvDQoNCg0KIyMjIDIuIFRoZSBzcHJlYWRzaGVldCBjb250YWlucyBtZXRhZGF0YSBpbmZvIHRoYXQgd2Ugd2FudCB0byBrbml0IGludG8gYW4gYWJicmV2aWF0ZWQgdmVyc2lvbiBvZiB0aGUgTW9CSSBtZXRhZGF0YQ0KU3ByZWFkc2hlZXQgY29udGFpbnMgMSB0YWIgd2l0aDogIA0KDQorIFNjaW5hbWUgIA0KKyBDb21tTmFtZQ0KKyBDb2RlMSAoc3BlY2llcyBjb2RlKQ0KKyBDb2RlMiAoRWxlbWVudCBJRCkgIA0KKyBHcmFuayAocm91bmRlZCkNCisgSW5wdXRzICANCisgSW5wdXRTb3VyY2UgIA0KKyBGaWxlbmFtZSAgDQorIENvbnRhY3ROYW1lICANCisgQ29udGFjdE9yZyAgDQorIENvbnRhY3RFbWFpbCAgDQorIE5vdGVzIChiYXNpYyBtZXRob2RzKSAgDQorIFJldmlld2VkICANCisgRmluYWwgIA0KICANCiMjIyAzLiBTZXQgdGhlIHZhcmlhYmxlczoNCih5b3Ugd2lsbCB3YW50IHRvIGNoYW5nZSB0aGVzZSkNCmBgYHtyfQ0Kd29ya2luZy5kaXIgPC0gIkM6L01pY2hlbGxlL01ldGFkYXRhL3Rlc3QiDQpiYXNlbGF5ZXJzLmRpciA8LSAiRDovR0lTL0Jhc2UvVVNBIg0KbW9kZWxzLmRpciA8LSAiTTovR0lTX1Byb2plY3RzL01PQkkiDQp4bHMgPC0gIm1ldGFkYXRhX2lucHV0cy54bHN4Ig0KDQpyYW5rcyA8LSBsaXN0KCJDcml0aWNhbGx5IEltcGVyaWxlZCIsICJJbXBlcmlsZWQiLCAiVnVsbmVyYWJsZSIsICJBcHBhcmVudGx5IFNlY3VyZSIsICJTZWN1cmUiKQ0KbmFtZXMocmFua3MpIDwtIGMoIkcxIiwgIkcyIiwgIkczIiwgIkc0IiwgIkc1IikNCmJpYnRhYmxlIDwtIHJlYWQuZGVsaW0ocGFzdGUod29ya2luZy5kaXIsImJpYnRhYmxlLnRhYiIsIHNlcCA9ICIvIiksIHN0cmluZ3NBc0ZhY3RvcnM9RkFMU0UpDQpzdGF0ZXMgPC0gcGFzdGUoYmFzZWxheWVycy5kaXIsICJTVEFURVMuc2hwIiwgc2VwID0gIi8iKQ0KY291bnRpZXMgPC0gcGFzdGUoYmFzZWxheWVycy5kaXIsICJDT1VOVElFUy5zaHAiLCBzZXAgPSAiLyIpDQpzZnN0YXRlcyA8LSBzdF9yZWFkKHN0YXRlcywgcXVpZXQgPSBUKQ0Kc2Zjb3VudGllcyA8LSBzdF9yZWFkKGNvdW50aWVzLCBxdWlldCA9IFQpDQpgYGANCg0KIyMjIDQuIFJlYWQgZWFjaCByZWNvcmQgaW4gdGhlIHNwcmVhZHNoZWV0IGFuZCBwYXNzIHRvIGtuaXRyDQpgYGB7cn0NCnNldHdkKHdvcmtpbmcuZGlyKQ0KaW4ubWV0YSA8LSByZWFkX3hsc3goeGxzLCBjb2xfdHlwZXMgPSAidGV4dCIpDQoNCmZvciAoaSBpbiAxOm5yb3coaW4ubWV0YSkpew0KICBzZG0uc2NpbmFtZSA8LSBpbi5tZXRhJFNjaU5hbWVbaV0NCiAgc2RtLmNvbW5hbWUgPC0gaW4ubWV0YSRDb21tTmFtZVtpXQ0KICByZXN1bHRzX3NoYXBlIDwtIHJhc3RlcihwYXN0ZShtb2RlbHMuZGlyLCBpbi5tZXRhJEZpbGVuYW1lW2ldLCBzZXAgPSAiLyIpKQ0KICByYXNleHQgPC0gZXh0ZW50KHJlc3VsdHNfc2hhcGUpDQogIHgxIDwtIHJhc2V4dFsxXSAtIChyYXNleHRbMV0gKiAwLjAxKQ0KICB4MiA8LSByYXNleHRbMl0gKyAocmFzZXh0WzJdICogMC4wMSkNCiAgeTEgPC0gcmFzZXh0WzNdIC0gKHJhc2V4dFszXSAqIDAuMDEpDQogIHkyIDwtIHJhc2V4dFs0XSArIChyYXNleHRbNF0gKiAwLjAxKQ0KICBOU3VybCA8LSBwYXN0ZSgiaHR0cDovL2V4cGxvcmVyLm5hdHVyZXNlcnZlLm9yZy9zZXJ2bGV0L05hdHVyZVNlcnZlP3NlYXJjaE5hbWU9Iixnc3ViKCIgIiwgIisiLCBzZG0uc2NpbmFtZSwgZml4ZWQ9VFJVRSksIHNlcD0iIikNCiAgbiA8LSBuY2hhcihpbi5tZXRhJEZpbGVuYW1lW2ldKQ0KICBtb2RlbF9ydW5fbmFtZSA8LSBzdWJzdHIoaW4ubWV0YSRGaWxlbmFtZVtpXSwgMSwgbi00KQ0KICBzZG0uY29kZTEgPC0gaW4ubWV0YSRDb2RlMVtpXQ0KICBzZG0uY29kZTIgPC0gaW4ubWV0YSRDb2RlMltpXQ0KICBzZG0uZ3JhbmsgPC0gaW4ubWV0YSRHcmFua1tpXQ0KICBzZG0ubW9kZWxlciA8LSBwYXN0ZShpbi5tZXRhJENvbnRhY3ROYW1lW2ldLCBpbi5tZXRhJENvbnRhY3RFbWFpbFtpXSwgaW4ubWV0YSRDb250YWN0T3JnW2ldLCBzZXAgPSAiLCAiKQ0KICBzZG0ucHJvZ3JhbSA8LSBpbi5tZXRhJENvbnRhY3RPcmdbaV0NCiAgc2RtLmlucHV0cyA8LSBpbi5tZXRhJElucHV0c1tpXQ0KICBzZG0uc291cmNlIDwtIGluLm1ldGEkSW5wdXRTb3VyY2VbaV0NCiAgc2RtLm5vdGVzIDwtIGluLm1ldGEkTm90ZXNbaV0NCiAgc2RtLnJldmlldyA8LSBpbi5tZXRhJFJldmlld2VkW2ldDQogIHNkbS5maW5hbCA8LSBpbi5tZXRhJEZpbmFsW2ldDQogIGtuaXQocGFzdGUod29ya2luZy5kaXIsIlNpbXBsaWZpZWRNZXRhZGF0YV9rbml0ci5ybnciLHNlcD0iLyIpLCBvdXRwdXQ9cGFzdGUobW9kZWxfcnVuX25hbWUsICIudGV4IixzZXA9IiIpKQ0KICBjYWxsIDwtIHBhc3RlMCgicGRmbGF0ZXggLWludGVyYWN0aW9uPW5vbnN0b3Btb2RlICIsIG1vZGVsX3J1bl9uYW1lLCAiLnRleCIpDQogIHN5c3RlbShjYWxsKQ0KICBzeXN0ZW0oY2FsbCkgIyAybmQgcnVuIHRvIGFwcGx5IGNpdGF0aW9uIG51bWJlcnMNCn0NCmBgYA0KDQoqKk4uQi4qKiBJIGp1c3QgYmFyZWx5IGtub3cgaG93IHRvIHVzZSBNYXJrZG93biwgTGFUZVggaXMgYSBiaXQgYmV5b25kIG1lLiBTbyBzb21lb25lIHBsZWFzZSBmaXggdGhpcyB1cC4=</div>
 
 
 

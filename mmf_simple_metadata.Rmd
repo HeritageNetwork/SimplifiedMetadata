@@ -16,7 +16,7 @@ library(sf)
 library(raster)
 library(xtable)
 library(tinytex)
-library(stringi)
+library(stringr)
 library(tables)
 library(readxl)
 ```
@@ -56,6 +56,7 @@ xls <- "metadata_inputs.xlsx"
 
 ranks <- list("Critically Imperiled", "Imperiled", "Vulnerable", "Apparently Secure", "Secure")
 names(ranks) <- c("G1", "G2", "G3", "G4", "G5")
+bibtable <- read.delim(paste(working.dir,"bibtable.tab", sep = "/"), stringsAsFactors=FALSE)
 states <- paste(baselayers.dir, "STATES.shp", sep = "/")
 counties <- paste(baselayers.dir, "COUNTIES.shp", sep = "/")
 sfstates <- st_read(states, quiet = T)
@@ -85,13 +86,14 @@ for (i in 1:nrow(in.meta)){
   sdm.modeler <- paste(in.meta$ContactName[i], in.meta$ContactEmail[i], in.meta$ContactOrg[i], sep = ", ")
   sdm.program <- in.meta$ContactOrg[i]
   sdm.inputs <- in.meta$Inputs[i]
-  sdm.source <- in.meta$InputSource
+  sdm.source <- in.meta$InputSource[i]
   sdm.notes <- in.meta$Notes[i]
   sdm.review <- in.meta$Reviewed[i]
   sdm.final <- in.meta$Final[i]
   knit(paste(working.dir,"SimplifiedMetadata_knitr.rnw",sep="/"), output=paste(model_run_name, ".tex",sep=""))
   call <- paste0("pdflatex -interaction=nonstopmode ", model_run_name, ".tex")
   system(call)
+  system(call) # 2nd run to apply citation numbers
 }
 ```
 
