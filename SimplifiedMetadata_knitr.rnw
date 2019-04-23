@@ -226,7 +226,7 @@ NatureServe and Heritage Network Partners. \Sexpr{format(Sys.Date(), "%Y")}. Spe
 <<RefList, results="asis", echo = FALSE>>=
 for(i in 1:nrow(bibtable)){
   if(str_detect(sdm.inputs, bibtable$Tag[i])){
-    x <- str_c("\\bibitem{", bibtable$BibCode, "} ", bibtable$Reference, " \\n", sep = "")
+    x <- str_c("\\bibitem{", bibtable$BibCode[i], "} ", bibtable$Reference[i], " \\n", sep = "")
     y <- sub("&", "\\\\&", x) #escape ampersands if there are any - special character in latex
     cat(y)
   }
