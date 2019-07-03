@@ -1,0 +1,32 @@
+Sections:
+---------
+Summary
+	Abstract
+	Purpose
+	Citation
+	Access Constraints
+	Use Constraints
+	Point of Contact
+
+Details
+	Supplemental Information
+	Process Steps
+	Data Sources
+
+Attributes
+
+Spatial Reference
+
+Metadata Info
+
+For using multiple files:
+instead of
+<<thermometer1, fig.height=1, fig.width=1, include=FALSE, echo=FALSE>>=
+
+use
+<<thermometer1, child='Child.Rnw'>>=
+
+where does this go?
+opts_knit$set(self.contained=FALSE)
+-------
+<TreeList><Raster_Information><Columns_and_Rows>61200, 72000</Columns_and_Rows><Number_of_Bands>1</Number_of_Bands><Cell_Size__X._Y_>0.00027777778, 0.00027777778</Cell_Size__X._Y_><Uncompressed_Size>16.42 GB</Uncompressed_Size><Format>TIFF</Format><Source_Type>Generic</Source_Type><Pixel_Type>floating point</Pixel_Type><Pixel_Depth>32 Bit</Pixel_Depth><NoData_Value>-3.39999995214e+038</NoData_Value><Colormap>absent</Colormap><Pyramids>level: 6, resampling: Nearest Neighbor</Pyramids><Compression>LZW</Compression><Mensuration_Capabilities>Basic</Mensuration_Capabilities><Status>Permanent</Status></Raster_Information><Extent><Top>49</Top><Left>-113</Left><Right>-96</Right><Bottom>29</Bottom></Extent><Spatial_Reference>GCS_WGS_1984<Linear_Unit></Linear_Unit><Angular_Unit>Degree (0.0174532925199433)</Angular_Unit><Datum>D_WGS_1984</Datum></Spatial_Reference><Statistics><Band_1><Build_Parameters>skipped columns:1, rows:1, ignored value(s): </Build_Parameters><Min>0.018167551606894</Min><Max>83.37677764892599</Max><Mean>0.77285196878067</Mean><Std_dev.>0.56464158867326</Std_dev.><Classes>0</Classes></Band_1></Statistics></TreeList>

@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Colorado Natural Heritage Program</origin>
+        <pubdate/>
+        <title>Data Set Title MH</title>
+        <geoform>raster digital data</geoform>
+        <pubinfo>
+          <pubplace>Fort Collins, CO</pubplace>
+          <publish>Colorado Natural Heritage Program, Colorado State University</publish>
+        </pubinfo>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>Abstract MH</abstract>
+      <purpose>Purpose MH</purpose>
+      <supplinf>Supplemental Information MH</supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>20171031</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update/>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-109.375</westbc>
+        <eastbc>-101.75</eastbc>
+        <northbc>41.25</northbc>
+        <southbc>36.75</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <place>
+        <placekt>Common geographic areas</placekt>
+        <placekey>Colorado</placekey>
+      </place>
+    </keywords>
+    <accconst>None.</accconst>
+    <useconst>Acknowledgement of CNHP would be appreciated. The data contained herein are provided on an as-is, as-available basis without warranties of any kind, expressed or implied, including (but not limited to) warranties of merchantability, fitness for a particular purpose, and non-infringement. CNHP, Colorado State University and the State of Colorado further expressly disclaim any warranty that the data are error-free or current as of the date supplied.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Michelle Fink</cntper>
+          <cntorg>Colorado Natural Heritage Program</cntorg>
+        </cntperp>
+        <cntpos>Landscape Ecologist</cntpos>
+        <cntaddr>
+          <addrtype>Mailing</addrtype>
+          <address>1475 Campus Delivery</address>
+          <address>Colorado State University</address>
+          <city>Fort Collins</city>
+          <state>CO</state>
+          <postal>80523-1475</postal>
+        </cntaddr>
+        <cntvoice>970-491-0765</cntvoice>
+        <cntemail>michelle.fink@colostate.edu</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <datacred>Colorado Natural Heritage Program</datacred>
+    <native>Environment as of Metadata Creation: Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.3.1 (Build 4959) Service Pack N/A (Build N/A)</native>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>No formal attribute accuracy tests were conducted.</attraccr>
+    </attracc>
+    <logic>No formal logical accuracy tests were conducted, not applicable for raster data.</logic>
+    <complete>All relevant data cells are assigned a value. NoData areas are non-applicable to the type of data represented or are outside of the analysis area.</complete>
+    <posacc>
+      <horizpa>
+        <horizpar>A formal accuracy assessment of the horizontal positional information in the data set has not been conducted.</horizpar>
+      </horizpa>
+      <vertacc>
+        <vertaccr>A formal accuracy assessment of the vertical positional information in the data set has either not been conducted, or is not applicable.</vertaccr>
+      </vertacc>
+    </posacc>
+    <lineage>
+      <procstep>
+        <procdesc>Development of the data set by the agency / individuals identified in the 'Originator' element in the Identification Info section of the record.</procdesc>
+        <procdate>Unknown</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <direct></direct>
+    <rastinfo>
+      <rasttype></rasttype>
+      <rowcount></rowcount>
+      <colcount></colcount>
+      <vrtcount></vrtcount>
+    </rastinfo>
+  </spdoinfo>
+  <eainfo>
+    <overview>
+      <eaover></eaover>
+    </overview>
+  </eainfo>
+  <spref>
+    <horizsys>
+      <geograph>
+        <latres>0.0197526870</latres>
+        <longres>0.0197526870</longres>
+        <geogunit>Decimal seconds</geogunit>
+      </geograph>
+      <geodetic>
+        <horizdn>WGS_1984</horizdn>
+        <ellips>WGS 84</ellips>
+        <semiaxis>6378137.0</semiaxis>
+        <denflat>298.257223563</denflat>
+      </geodetic>
+    </horizsys>
+  </spref>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntperp>
+          <cntper>Michelle Fink</cntper>
+          <cntorg>Colorado Natural Heritage Program</cntorg>
+        </cntperp>
+        <cntpos>Landscape Ecologist</cntpos>
+        <cntaddr>
+          <addrtype>Mailing</addrtype>
+          <address>1475 Campus Delivery</address>
+          <address>Colorado State University</address>
+          <city>Fort Collins</city>
+          <state>CO</state>
+          <postal>80523-1475</postal>
+        </cntaddr>
+        <cntvoice>970-491-0765</cntvoice>
+        <cntemail>michelle.fink@colostate.edu</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>Distributor assumes no liability for misuse of data.</distliab>
+  </distinfo>
+  <metainfo>
+    <metd>20180619</metd>
+    <metuc>Record created using USGS Metadata Wizard tool. (https://github.com/usgs/fort-pymdwizard)</metuc>
+    <metc>
+      <cntinfo>
+        <cntperp>
+          <cntper>Michelle Fink</cntper>
+          <cntorg>Colorado Natural Heritage Program</cntorg>
+        </cntperp>
+        <cntpos>Landscape Ecologist</cntpos>
+        <cntaddr>
+          <addrtype>Mailing</addrtype>
+          <address>1475 Campus Delivery</address>
+          <address>Colorado State University</address>
+          <city>Fort Collins</city>
+          <state>CO</state>
+          <postal>80523-1475</postal>
+        </cntaddr>
+        <cntvoice>970-491-0765</cntvoice>
+        <cntemail>michelle.fink@colostate.edu</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+  </metainfo>
+</metadata>

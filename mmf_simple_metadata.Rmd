@@ -22,75 +22,97 @@ library(readxl)
 ```
 (Not sure all of these ^ packages are still used with the modified code.)
 
-
-+ SimplifiedMetadata_knitr.rnw
++ BaseMetadata_knitr.rnw
 + metadata_inputs.xlsx
 + MikTex installed, see http://miktex.org/
 
-
-### 2. The spreadsheet contains metadata info that we want to knit into an abbreviated version of the MoBI metadata
+### 2. The spreadsheet contains metadata info that is different for each file we want to create
 Spreadsheet contains 1 tab with:  
 
-+ Sciname  
-+ CommName
-+ Code1 (species code)
-+ Code2 (Element ID)  
-+ Grank (rounded)
-+ Inputs  
-+ InputSource  
-+ Filename  
-+ ContactName  
-+ ContactOrg  
-+ ContactEmail  
-+ Notes (basic methods)  
-+ Reviewed  
-+ Final  
-  
-### 3. Set the variables:
-(you will want to change these)
++ Sciname (use to name the subject of the dataset. *e.g., "depth to bedrock"*)  
++ CommName (use for alternate name of subject, if applicable)  
++ Title  
++ Filename (filename of the dataset. *e.g., "something.shp", "soils_ph.tif"*)  
++ Abstract  
++ Purpose  
++ SuppInfo (supplemental info, if applicable)  
++ Inputs1  
++ InputSource1
++ Inputs2  
++ InputSource2
++ Inputs3  
++ InputSource3
++ Inputs4  
++ InputSource4
++ ProcStep1
++ ProcStep2
++ ProcStep3
++ ProcStep4
++ Attributes (summary of important attributes and what they mean)  
+
+Note that, if you don't have 4 inputs or 4 process steps, still include them as empty columns in the spreadsheet. On the other hand, if you have *more* than 4, um, well that's not in here yet.
+
+### 3. Add metadata info that will be the same for every file
 ```{r}
-working.dir <- "C:/Michelle/Metadata/test"
+md.puplisher <- "Colorado Natural Heritage Program, Colorado State University" #Organization
+md.poc <- "Michelle M. Fink (michelle.fink@colostate.edu)" #Point of contact
+md.access <- "None" #Access constraints
+
+#Use constraints
+md.use <- "Acknowledgement of CNHP would be appreciated. The data contained herein are provided on an as-is, as-available basis without warranties of any kind, expressed or implied, including (but not limited to) warranties of merchantability, fitness for a particular purpose, and non-infringement. CNHP, Colorado State University and the State of Colorado further expressly disclaim any warranty that the data are error-free or current as of the date supplied." 
+
+#Spatial reference info, presumably all the same for this batch of data
+# (Projection, minX, maxX, minY, maxY, cellsize (if raster))
+# TODO: automate this by reading the file
+md.spatial <- c("GCS_WGS_1984", "-113", "-96", "29", "49", "0.00027777778") 
+```
+
+### 4. Set the variablesfor the code:
+(you will want to change these)
+
+```{r}
+work.dir <- "C:/Michelle/Metadata/test"
 baselayers.dir <- "D:/GIS/Base/USA"
 models.dir <- "M:/GIS_Projects/MOBI"
 xls <- "metadata_inputs.xlsx"
+bibtable <- read.delim(paste(work.dir,"bibtable.tab", sep = "/"), stringsAsFactors=FALSE)
 
-ranks <- list("Critically Imperiled", "Imperiled", "Vulnerable", "Apparently Secure", "Secure")
-names(ranks) <- c("G1", "G2", "G3", "G4", "G5")
-bibtable <- read.delim(paste(working.dir,"bibtable.tab", sep = "/"), stringsAsFactors=FALSE)
-states <- paste(baselayers.dir, "STATES.shp", sep = "/")
-counties <- paste(baselayers.dir, "COUNTIES.shp", sep = "/")
-sfstates <- st_read(states, quiet = T)
-sfcounties <- st_read(counties, quiet = T)
+# states <- paste(baselayers.dir, "STATES.shp", sep = "/")
+# counties <- paste(baselayers.dir, "COUNTIES.shp", sep = "/")
+# sfstates <- st_read(states, quiet = T)
+# sfcounties <- st_read(counties, quiet = T)
 ```
 
-### 4. Read each record in the spreadsheet and pass to knitr
+### 5. Read each record in the spreadsheet and pass to knitr
+
 ```{r}
-setwd(working.dir)
+setwd(work.dir)
 in.meta <- read_xlsx(xls, col_types = "text")
 
 for (i in 1:nrow(in.meta)){
-  sdm.sciname <- in.meta$SciName[i]
-  sdm.comname <- in.meta$CommName[i]
-  results_shape <- raster(paste(models.dir, in.meta$Filename[i], sep = "/"))
-  rasext <- extent(results_shape)
-  x1 <- rasext[1] - (rasext[1] * 0.01)
-  x2 <- rasext[2] + (rasext[2] * 0.01)
-  y1 <- rasext[3] - (rasext[3] * 0.01)
-  y2 <- rasext[4] + (rasext[4] * 0.01)
-  NSurl <- paste("http://explorer.natureserve.org/servlet/NatureServe?searchName=",gsub(" ", "+", sdm.sciname, fixed=TRUE), sep="")
+  md.sciname <- in.meta$SciName[i]
+  md.comname <- in.meta$CommName[i]
   n <- nchar(in.meta$Filename[i])
   model_run_name <- substr(in.meta$Filename[i], 1, n-4)
-  sdm.code1 <- in.meta$Code1[i]
-  sdm.code2 <- in.meta$Code2[i]
-  sdm.grank <- in.meta$Grank[i]
-  sdm.modeler <- paste(in.meta$ContactName[i], in.meta$ContactEmail[i], in.meta$ContactOrg[i], sep = ", ")
-  sdm.program <- in.meta$ContactOrg[i]
-  sdm.inputs <- in.meta$Inputs[i]
-  sdm.source <- in.meta$InputSource[i]
-  sdm.notes <- in.meta$Notes[i]
-  sdm.review <- in.meta$Reviewed[i]
-  sdm.final <- in.meta$Final[i]
-  knit(paste(working.dir,"SimplifiedMetadata_knitr.rnw",sep="/"), output=paste(model_run_name, ".tex",sep=""))
+  # results_shape <- raster(paste(models.dir, in.meta$Filename[i], sep = "/"))
+  # rasext <- extent(results_shape)
+  # x1 <- rasext[1] - (rasext[1] * 0.01)
+  # x2 <- rasext[2] + (rasext[2] * 0.01)
+  # y1 <- rasext[3] - (rasext[3] * 0.01)
+  # y2 <- rasext[4] + (rasext[4] * 0.01)
+  # NSurl <- paste("http://explorer.natureserve.org/servlet/NatureServe?searchName=",gsub(" ", "+", md.sciname, fixed=TRUE), sep="")
+
+  md.title <- in.meta$Title[i]
+  md.abstract <- in.meta$Abstract[i]
+  md.purpose <- in.meta$Purpose[i]
+  md.supinfo <- in.meta$SuppInfo[i]
+  md.program <- in.meta$ContactOrg[i]
+  md.inputs <- c(in.meta$Inputs1[i], in.meta$Inputs2[i], in.meta$Inputs3[i], in.meta$Inputs4[i])
+  md.source <- c(in.meta$InputSource1[i], in.meta$InputSource2[i], in.meta$InputSource3[i], in.meta$InputSource4[i])
+  md.steps <- c(in.meta$ProcStep1[i], in.meta$ProcStep2[i], in.meta$ProcStep3[i], in.meta$ProcStep4[i])
+  md.attributes <- in.meta$Attributes[i]
+
+  knit(paste(work.dir,"BaseMetadata_knitr.rnw",sep="/"), output=paste(model_run_name, ".tex",sep=""))
   call <- paste0("pdflatex -interaction=nonstopmode ", model_run_name, ".tex")
   system(call)
   system(call) # 2nd run to apply citation numbers
