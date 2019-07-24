@@ -67,7 +67,7 @@ md.use <- "Acknowledgement of CNHP would be appreciated. The data contained here
 md.spatial <- c("GCS_WGS_1984", "-113", "-96", "29", "49", "0.00027777778") 
 ```
 
-### 4. Set the variablesfor the code:
+### 4. Set the variables for the code:
 (you will want to change these)
 
 ```{r}
@@ -115,8 +115,8 @@ for (i in 1:nrow(in.meta)){
   knit(paste(work.dir,"BaseMetadata_knitr.rnw",sep="/"), output=paste(model_run_name, ".tex",sep=""))
   call <- paste0("pdflatex -interaction=nonstopmode ", model_run_name, ".tex")
   system(call)
-  system(call) # 2nd run to apply citation numbers
+  #system(call) # 2nd run to apply citation numbers
 }
 ```
 
-**N.B.** I just barely know how to use Markdown, LaTeX is a bit beyond me. So someone please fix this up.
+Work in progress...

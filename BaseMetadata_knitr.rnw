@@ -52,7 +52,7 @@
 \renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
 
 %add footers
-\cfoot{Placeholder footer \\ ain't it grand}
+\cfoot{\Sexpr{as.character(md.comname)} \\ (\textit{\Sexpr{as.character(md.sciname)}})
 %\small   %small font. The double slashes is newline in fancyhdr
 % Species distribution model for \Sexpr{as.character(sdm.comname)} (\textit{\Sexpr{as.character(sdm.sciname)}}). \\ \Sexpr{sdm.program}
 %}
@@ -65,10 +65,10 @@
 %----------------------------------------------------------------------------------------
 
 \begin{center}
-\Huge{\bf \emph{Replace with metadata title variable}} % Main title
+\Huge{\bf \emph{\Sexpr{as.character(md.title)}}} % Main title
 \end{center}
 
-\listofquestions % This prints the subtitle and a list of all of all the sections
+\listofquestions % This prints the subtitle and a list of all the sections
 
 %----------------------------------------------------------------------------------------
 %	SECTIONS AND CONTENT
@@ -76,22 +76,22 @@
 
 \question{Section \thequestions: Summary Information}\label{summary}
 \subsection*{Abstract}
-Replace with Abstract variable
+\Sexpr{as.character(md.abstract)}
 \smallskip
 \subsection*{Purpose}
-Replace with Purpose variable
+\Sexpr{as.character(md.purpose)}
 \smallskip
 \subsection*{Citation}
 Replace with Citation variable
 \smallskip
 \subsection*{Access Constraints}
-Replace with Access variable
+\Sexpr{as.character(md.access)}
 \smallskip
 \subsection*{Use Constraints}
-Replace with Use variable
+\Sexpr{as.character(md.use)}
 \smallskip
 \subsection*{Point of Contact}
-Replace with Contact variable
+\Sexpr{as.character(md.poc)}
 \smallskip
 
 \hyperref[summary]{top}
@@ -99,7 +99,7 @@ Replace with Contact variable
 
 \question{Section \thequestions: Detailed Methods and Sources}\label{detail}
 \subsection*{Supplemental Information}
-Replace with SuppInfo variable
+\Sexpr{as.character(md.supinfo)}
 \smallskip
 \subsection*{Process Steps}
 Replace with code to iterate through however many steps there are
@@ -113,14 +113,14 @@ Replace with code to iterate through however many sources there are
 
 \question{Section \thequestions: Attribute Information}\label{fields}
 
-Replace with variable for attribute summary
+\Sexpr{as.character(md.attributes)}
 
 \hyperref[summary]{top}
 %------------------------------------------------
 
 \question{Section \thequestions: Spatial Reference Information}\label{spatial}
 
-Replace with variable for geospatial info
+\Sexpr{as.character(md.spatial)}
 
 \hyperref[summary]{top}
 %------------------------------------------------
